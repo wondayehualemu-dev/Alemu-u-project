@@ -1,71 +1,79 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="am">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Official personal website of Alemu Wondayehu Gashi.">
-  <title>Alemu Wondayehu Gashi | Personal Website</title>
+  <meta name="description" content="Alemu Wondayehu - Personal Portfolio">
+  <title>Alemu Wondayehu | Personal Website</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: Arial, sans-serif;
-      background: #0b1220;
-      color: white;
+      background: #081426;
+      color: #f5f7fb;
       line-height: 1.7;
     }
     header {
-      padding: 22px 8%;
+      padding: 20px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #111c30;
+      flex-wrap: wrap;
+      gap: 15px;
+      background: #0d1d34;
+      border-bottom: 1px solid #263a55;
     }
-    .logo { color: #38bdf8; font-size: 24px; font-weight: bold; }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 18px;
+    .logo { color: #e9bd65; font-size: 23px; font-weight: bold; }
+    nav { display: flex; gap: 18px; flex-wrap: wrap; }
+    nav a { color: white; text-decoration: none; }
+    nav a:hover { color: #e9bd65; }
+    button {
+      background: #e9bd65; color: #081426;
+      border: 0; padding: 10px 17px;
+      border-radius: 8px; cursor: pointer; font-weight: bold;
     }
-    nav a:hover { color: #38bdf8; }
     .hero {
-      min-height: 75vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 60px 20px;
+      min-height: 78vh;
+      display: flex; align-items: center;
+      justify-content: center; gap: 55px;
+      padding: 65px 8%; flex-wrap: wrap;
     }
-    .hero h1 { font-size: clamp(34px, 6vw, 58px); }
-    .hero h1 span { color: #38bdf8; }
-    .hero p { color: #cbd5e1; margin: 20px 0; }
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      background: #0284c7;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
+    .hero-text { max-width: 550px; }
+    .hero h1 { font-size: clamp(36px, 6vw, 58px); line-height: 1.2; }
+    .hero h1 span { color: #e9bd65; }
+    .hero p { color: #c2ccda; margin: 20px 0; font-size: 18px; }
+    .photo {
+      width: 270px; height: 270px;
+      border-radius: 50%; object-fit: cover;
+      border: 5px solid #e9bd65;
+      box-shadow: 0 0 35px #e9bd6540;
     }
-    section { padding: 65px 8%; text-align: center; }
-    section h2 { color: #38bdf8; margin-bottom: 20px; }
-    .card {
-      background: #17243a;
-      padding: 25px;
-      border-radius: 12px;
-      max-width: 650px;
-      margin: 20px auto;
+    section { padding: 65px 8%; }
+    section h2 { color: #e9bd65; font-size: 30px; margin-bottom: 20px; }
+    .panel {
+      background: #10233d; padding: 28px;
+      border-radius: 14px; border: 1px solid #263a55;
     }
+    .projects {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .project {
+      background: #10233d; padding: 25px;
+      border-radius: 12px; border: 1px solid #263a55;
+    }
+    .project h3 { color: #e9bd65; margin-bottom: 10px; }
+    a { color: #e9bd65; }
     footer {
-      background: #111c30;
-      padding: 25px;
-      text-align: center;
-      color: #cbd5e1;
+      text-align: center; padding: 25px;
+      background: #0d1d34; color: #c2ccda;
     }
-    @media(max-width:600px) {
-      header { flex-direction: column; gap: 12px; }
-      nav a { margin: 0 7px; font-size: 14px; }
+    @media(max-width: 600px) {
+      header { justify-content: center; }
+      .hero { text-align: center; }
+      .photo { width: 220px; height: 220px; }
     }
   </style>
 </head>
@@ -79,48 +87,75 @@
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </nav>
+  <button onclick="toggleLanguage()">አማ / EN</button>
 </header>
 
 <main>
   <section class="hero" id="home">
-    <h1>Hello, I'm <span>Alemu Wondayehu Gashi</span></h1>
-    <p>Welcome to my official personal website.</p>
-    <a class="btn" href="#about">Discover More</a>
+    <div class="hero-text">
+      <p id="welcome">እንኳን ወደ የግል ድረገጼ በደህና መጡ!</p>
+      <h1>Alemu <span>Wondayehu</span></h1>
+      <p id="intro">ይህ የግል ድረገጼ ነው። ስለ እኔ፣ ስራዎቼ እና ፕሮጀክቶቼ እዚህ ማወቅ ይችላሉ።</p>
+      <a href="#about"><button id="more">ስለ እኔ ይወቁ</button></a>
+    </div>
+    <img class="photo" src="alex.jpg" alt="Alemu Wondayehu">
   </section>
 
   <section id="about">
-    <h2>About Me</h2>
-    <div class="card">
-      <p>
-        Welcome to my personal website.
-        My name is Alemu Wondayehu Gashi.
-        This is my official online space where
-        I share my projects, ideas and activities.
-      </p>
+    <h2 id="aboutTitle">ስለ እኔ</h2>
+    <div class="panel">
+      <p id="aboutText">ሰላም! እኔ Alemu Wondayehu ነኝ። ይህን ድረገጽ ራሴን፣ ሀሳቦቼን እና ፕሮጀክቶቼን ለማሳየት ገንብቻለሁ። እንኳን ደህና መጡ!</p>
     </div>
   </section>
 
   <section id="projects">
-    <h2>My Projects</h2>
-    <div class="card">
-      <h3>ALEM U PROJECT</h3>
-      <p>My personal website project, built for the world.</p>
+    <h2 id="projectsTitle">ፕሮጀክቶቼ</h2>
+    <div class="projects">
+      <div class="project">
+        <h3>ALEM U PROJECT</h3>
+        <p id="project1">የግል ድረገጽ ፕሮጀክቴ።</p>
+      </div>
+      <div class="project">
+        <h3>My Portfolio</h3>
+        <p id="project2">የስራዎቼን እና ሀሳቦቼን ማሳያ ቦታ።</p>
+      </div>
     </div>
   </section>
 
   <section id="contact">
-    <h2>Contact Me</h2>
-    <div class="card">
-      <p>Thank you for visiting my website!</p>
-      <p>More contact information coming soon.</p>
+    <h2 id="contactTitle">አግኙኝ</h2>
+    <div class="panel">
+      <p id="contactText">ለመገናኘት በኢሜይል ያግኙኝ።</p>
+      <p>Email: <a href="mailto:Wondayehualemu@gmail.com">Wondayehualemu@gmail.com</a></p>
     </div>
   </section>
 </main>
 
 <footer>
-  <p>© 2026 Alemu Wondayehu Gashi. All Rights Reserved.</p>
-  <p>ALEM U PROJECT</p>
+  © 2026 Alemu Wondayehu. All Rights Reserved.
 </footer>
+
+<script>
+let english = false;
+function toggleLanguage() {
+  english = !english;
+  document.getElementById("welcome").textContent = english
+    ? "Welcome to my personal website!" : "እንኳን ወደ የግል ድረገጼ በደህና መጡ!";
+  document.getElementById("intro").textContent = english
+    ? "This is my personal website. Learn about me, my work and my projects here."
+    : "ይህ የግል ድረገጼ ነው። ስለ እኔ፣ ስራዎቼ እና ፕሮጀክቶቼ እዚህ ማወቅ ይችላሉ።";
+  document.getElementById("more").textContent = english ? "Learn About Me" : "ስለ እኔ ይወቁ";
+  document.getElementById("aboutTitle").textContent = english ? "About Me" : "ስለ እኔ";
+  document.getElementById("aboutText").textContent = english
+    ? "Hello! I am Alemu Wondayehu. I created this website to share my profile, ideas and projects. Welcome!"
+    : "ሰላም! እኔ Alemu Wondayehu ነኝ። ይህን ድረገጽ ራሴን፣ ሀሳቦቼን እና ፕሮጀክቶቼን ለማሳየት ገንብቻለሁ። እንኳን ደህና መጡ!";
+  document.getElementById("projectsTitle").textContent = english ? "My Projects" : "ፕሮጀክቶቼ";
+  document.getElementById("project1").textContent = english ? "My personal website project." : "የግል ድረገጽ ፕሮጀክቴ።";
+  document.getElementById("project2").textContent = english ? "A place to showcase my work and ideas." : "የስራዎቼን እና ሀሳቦቼን ማሳያ ቦታ።";
+  document.getElementById("contactTitle").textContent = english ? "Contact Me" : "አግኙኝ";
+  document.getElementById("contactText").textContent = english ? "Contact me by email." : "ለመገናኘት በኢሜይል ያግኙኝ።";
+}
+</script>
 
 </body>
 </html>
