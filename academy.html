@@ -1,0 +1,785 @@
+
+<!DOCTYPE html>
+<html lang="am">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Alemu U Project Learning Academy - Learn Frontend, Backend and Full Stack Development from Beginner to Professional.">
+<meta name="theme-color" content="#081426">
+<title>Alemu U Project | Learning Academy</title>
+
+<style>
+:root {
+  --bg:#081426;
+  --surface:#10233d;
+  --surface2:#142b49;
+  --gold:#e9bd65;
+  --text:#f5f7fb;
+  --muted:#b8c5d6;
+  --border:#263a55;
+  --blue:#2588ed;
+}
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,sans-serif;
+  line-height:1.7;
+}
+a {text-decoration:none;color:inherit}
+button,input {font:inherit}
+.container {width:min(1150px,90%);margin:auto}
+
+/* HEADER */
+header {
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#0d1d34f5;
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
+}
+.navbar {
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.logo {font-size:24px;font-weight:bold;color:var(--gold)}
+nav {display:flex;gap:22px;flex-wrap:wrap}
+nav a {font-size:14px;color:var(--muted)}
+nav a:hover {color:var(--gold)}
+.lang {
+  padding:10px 17px;
+  background:var(--gold);
+  border:0;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* HERO */
+.hero {
+  padding:85px 0 70px;
+  text-align:center;
+  background:radial-gradient(ellipse at top,#19375b 0%,var(--bg) 65%);
+}
+.tag {
+  display:inline-block;
+  color:var(--gold);
+  border:1px solid #e9bd6570;
+  background:#e9bd6510;
+  padding:7px 17px;
+  border-radius:30px;
+  font-size:13px;
+  margin-bottom:22px;
+}
+.hero h1 {
+  font-size:clamp(36px,6vw,65px);
+  line-height:1.2;
+  margin-bottom:20px;
+}
+.hero h1 span {color:var(--gold)}
+.hero p {
+  color:var(--muted);
+  max-width:700px;
+  margin:0 auto 28px;
+  font-size:18px;
+}
+.btn {
+  display:inline-block;
+  padding:13px 24px;
+  border-radius:8px;
+  font-weight:bold;
+  transition:.3s;
+}
+.primary {background:var(--gold);color:var(--bg)}
+.secondary {border:1px solid var(--gold);color:var(--gold)}
+.btn:hover {transform:translateY(-3px)}
+.hero-buttons {display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+
+/* STATS */
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  padding:25px 0;
+}
+.stat {
+  text-align:center;
+  padding:20px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+}
+.stat h3 {font-size:28px;color:var(--gold)}
+.stat p {font-size:14px;color:var(--muted)}
+
+/* SECTIONS */
+section {padding:65px 0}
+.section-title {
+  font-size:32px;
+  color:var(--gold);
+  margin-bottom:10px;
+}
+.section-desc {color:var(--muted);margin-bottom:30px}
+
+/* COURSE CATEGORIES */
+.categories {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.category {
+  background:var(--surface);
+  border:1px solid var(--border);
+  padding:28px;
+  border-radius:15px;
+  transition:.3s;
+}
+.category:hover {
+  transform:translateY(-6px);
+  border-color:var(--gold);
+}
+.category-icon {font-size:36px;margin-bottom:12px}
+.category h3 {color:var(--gold);font-size:21px;margin-bottom:10px}
+.category p {color:var(--muted);font-size:14px}
+.category a {
+  display:inline-block;
+  margin-top:18px;
+  color:var(--gold);
+  font-weight:bold;
+}
+
+/* SEARCH */
+.search-area {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
+}
+.search-area input {
+  flex:1;
+  min-width:220px;
+  padding:14px 17px;
+  background:var(--surface);
+  color:white;
+  border:1px solid var(--border);
+  border-radius:9px;
+  outline:none;
+}
+.search-area input:focus {border-color:var(--gold)}
+.filters {display:flex;gap:9px;flex-wrap:wrap}
+.filter {
+  padding:10px 15px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:var(--surface);
+  color:var(--text);
+  cursor:pointer;
+}
+.filter.active,.filter:hover {
+  background:var(--gold);
+  color:var(--bg);
+}
+
+/* COURSES */
+.course-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.course {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  transition:.3s;
+}
+.course:hover {
+  transform:translateY(-5px);
+  border-color:var(--gold);
+}
+.course-top {
+  padding:23px;
+  background:var(--surface2);
+}
+.course-icon {font-size:35px}
+.course-top small {color:var(--gold);font-weight:bold}
+.course-body {padding:22px}
+.course h3 {font-size:21px;margin:8px 0}
+.course p {font-size:14px;color:var(--muted)}
+.course-meta {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:15px 0;
+}
+.course-meta span {
+  background:#203b5d;
+  padding:5px 9px;
+  border-radius:5px;
+  font-size:11px;
+  color:var(--muted);
+}
+.details-btn {
+  display:block;
+  width:100%;
+  padding:11px;
+  background:var(--gold);
+  color:var(--bg);
+  border:0;
+  border-radius:7px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.course-details {
+  display:none;
+  margin-top:16px;
+  padding:15px;
+  border-top:1px solid var(--border);
+}
+.course-details.open {display:block}
+.course-details h4 {color:var(--gold);margin-bottom:8px}
+.course-details ul {padding-left:20px;color:var(--muted);font-size:13px}
+.no-results {
+  display:none;
+  color:var(--muted);
+  padding:25px;
+  text-align:center;
+}
+
+/* LEARNING PATH */
+.path {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.path-item {
+  padding:24px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+}
+.path-item h3 {color:var(--gold);margin-bottom:8px}
+.path-item p {font-size:14px;color:var(--muted)}
+
+/* FEATURES */
+.features {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+.feature {
+  padding:22px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+}
+.feature h3 {color:var(--gold);margin-bottom:6px}
+.feature p {color:var(--muted);font-size:14px}
+
+/* FOOTER */
+footer {
+  background:#0d1d34;
+  border-top:1px solid var(--border);
+  padding:35px 0;
+  text-align:center;
+}
+footer p {color:var(--muted);font-size:14px}
+footer span {color:var(--gold)}
+.footer-link {color:var(--gold);display:inline-block;margin-top:12px}
+
+/* MOBILE */
+@media(max-width:850px) {
+  .navbar {flex-wrap:wrap;padding:15px 0;justify-content:center}
+  nav {justify-content:center;gap:14px}
+  .categories,.course-grid,.path {grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px) {
+  .categories,.course-grid,.path,.features {grid-template-columns:1fr}
+  .stats {grid-template-columns:1fr}
+  .hero {padding:55px 0}
+  .hero p {font-size:16px}
+  .section-title {font-size:27px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container navbar">
+  <a class="logo" href="#home">ALEMU U.</a>
+
+  <nav>
+    <a href="#home" data-am="መነሻ" data-en="Home">መነሻ</a>
+    <a href="#categories" data-am="የትምህርት ክፍሎች" data-en="Categories">የትምህርት ክፍሎች</a>
+    <a href="#courses" data-am="ኮርሶች" data-en="Courses">ኮርሶች</a>
+    <a href="#path" data-am="የመማሪያ መንገድ" data-en="Learning Path">የመማሪያ መንገድ</a>
+    <a href="#contact" data-am="አግኙን" data-en="Contact">አግኙን</a>
+  </nav>
+
+  <button class="lang" onclick="toggleLanguage()" id="langBtn">English</button>
+</div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="container">
+  <div class="tag">WELCOME TO ALEM U PROJECT</div>
+
+  <h1>
+    <span data-am="ከዜሮ ጀምረህ" data-en="Start From Zero">ከዜሮ ጀምረህ</span>
+    <br>
+    <span data-am="Developer ሁን!" data-en="Become a Developer!">Developer ሁን!</span>
+  </h1>
+
+  <p
+    data-am="Frontend, Backend እና Full Stack Development በአማርኛ ማብራሪያና English Technical Terms ከመሠረቱ እስከ Advanced ድረስ ተማር።"
+    data-en="Learn Frontend, Backend and Full Stack Development from the basics to advanced levels with practical lessons and projects.">
+    Frontend, Backend እና Full Stack Development በአማርኛ ማብራሪያና English Technical Terms ከመሠረቱ እስከ Advanced ድረስ ተማር።
+  </p>
+
+  <div class="hero-buttons">
+    <a href="#courses" class="btn primary" data-am="ትምህርት ጀምር" data-en="Start Learning">ትምህርት ጀምር</a>
+    <a href="#categories" class="btn secondary" data-am="ኮርሶችን ተመልከት" data-en="Explore Courses">ኮርሶችን ተመልከት</a>
+  </div>
+</div>
+</section>
+
+<!-- STATS -->
+<div class="container stats">
+  <div class="stat">
+    <h3>03</h3>
+    <p data-am="ዋና የትምህርት መንገዶች" data-en="Learning Paths">ዋና የትምህርት መንገዶች</p>
+  </div>
+  <div class="stat">
+    <h3>03</h3>
+    <p data-am="የእውቀት ደረጃዎች" data-en="Learning Levels">የእውቀት ደረጃዎች</p>
+  </div>
+  <div class="stat">
+    <h3>100%</h3>
+    <p data-am="ተግባራዊ ትምህርት ግብ" data-en="Practical Learning Goal">ተግባራዊ ትምህርት ግብ</p>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section id="categories">
+<div class="container">
+  <h2 class="section-title" data-am="የትምህርት ክፍሎች" data-en="Learning Categories">የትምህርት ክፍሎች</h2>
+
+  <p class="section-desc" data-am="የሚፈልጉትን የProgramming መስክ ይምረጡ።" data-en="Choose the programming field you want to learn.">የሚፈልጉትን የProgramming መስክ ይምረጡ።</p>
+
+  <div class="categories">
+
+    <div class="category">
+      <div class="category-icon">🎨</div>
+      <h3>Frontend Development</h3>
+      <p data-am="Website የሚታይ ክፍል መገንባት። HTML, CSS, JavaScript እና React ተማር።" data-en="Build the visual part of websites using HTML, CSS, JavaScript and React.">Website የሚታይ ክፍል መገንባት። HTML, CSS, JavaScript እና React ተማር።</p>
+      <a href="#courses">Explore →</a>
+    </div>
+
+    <div class="category">
+      <div class="category-icon">⚙️</div>
+      <h3>Backend Development</h3>
+      <p data-am="Server, Database, API እና Authentication መገንባት ተማር።" data-en="Learn servers, databases, APIs and authentication.">Server, Database, API እና Authentication መገንባት ተማር።</p>
+      <a href="#courses">Explore →</a>
+    </div>
+
+    <div class="category">
+      <div class="category-icon">🚀</div>
+      <h3>Full Stack Development</h3>
+      <p data-am="Frontend እና Backend በማጣመር Complete Web Applications ገንባ።" data-en="Combine frontend and backend to build complete web applications.">Frontend እና Backend በማጣመር Complete Web Applications ገንባ።</p>
+      <a href="#courses">Explore →</a>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+<div class="container">
+
+  <h2 class="section-title" data-am="የትምህርት ኮርሶች" data-en="Available Courses">የትምህርት ኮርሶች</h2>
+
+  <p class="section-desc" data-am="ከBeginner እስከ Advanced የሚወስዱ የተዘጋጁ የትምህርት መንገዶች።" data-en="Structured learning paths from beginner to advanced.">ከBeginner እስከ Advanced የሚወስዱ የተዘጋጁ የትምህርት መንገዶች።</p>
+
+  <div class="search-area">
+    <input type="search" id="courseSearch" placeholder="Search courses..." aria-label="Search courses">
+    <div class="filters">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="frontend">Frontend</button>
+      <button class="filter" data-filter="backend">Backend</button>
+      <button class="filter" data-filter="fullstack">Full Stack</button>
+    </div>
+  </div>
+
+  <div class="course-grid" id="courseGrid">
+
+    <article class="course" data-category="frontend">
+      <div class="course-top">
+        <div class="course-icon">🌐</div>
+        <small>FRONTEND • 01</small>
+      </div>
+      <div class="course-body">
+        <h3>HTML Fundamentals</h3>
+        <p data-am="የWeb Development መሠረት። HTML Elements, Tags, Forms እና Semantic HTML ተማር።" data-en="Learn HTML elements, tags, forms and semantic HTML from the beginning.">የWeb Development መሠረት። HTML Elements, Tags, Forms እና Semantic HTML ተማር።</p>
+        <div class="course-meta"><span>Beginner</span><span>HTML5</span></div>
+        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
+        <div class="course-details">
+          <h4>Curriculum</h4>
+          <ul>
+            <li>Introduction to Web Development</li>
+            <li>HTML Document Structure</li>
+            <li>Elements, Attributes and Headings</li>
+            <li>Links, Images and Tables</li>
+            <li>Forms and Input Types</li>
+            <li>Semantic HTML</li>
+            <li>Practical Project: Personal Web Page</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="course" data-category="frontend">
+      <div class="course-top">
+        <div class="course-icon">🎨</div>
+        <small>FRONTEND • 02</small>
+      </div>
+      <div class="course-body">
+        <h3>CSS Mastery</h3>
+        <p data-am="Website በሚያምር መልኩ ማቅረብ። Colors, Layout, Flexbox, Grid እና Responsive Design ተማር።" data-en="Master styling, colors, layouts, Flexbox, Grid and responsive design.">Website በሚያምር መልኩ ማቅረብ። Colors, Layout, Flexbox, Grid እና Responsive Design ተማር።</p>
+        <div class="course-meta"><span>Beginner</span><span>CSS3</span></div>
+        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
+        <div class="course-details">
+          <h4>Curriculum</h4>
+          <ul>
+            <li>CSS Syntax and Selectors</li>
+            <li>Colors, Fonts and Backgrounds</li>
+            <li>Box Model and Positioning</li>
+            <li>Flexbox Layout</li>
+            <li>CSS Grid</li>
+            <li>Responsive Design and Media Queries</li>
+            <li>Practical Project: Responsive Website</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="course" data-category="frontend">
+      <div class="course-top">
+        <div class="course-icon">💛</div>
+        <small>FRONTEND • 03</small>
+      </div>
+      <div class="course-body">
+        <h3>JavaScript Programming</h3>
+        <p data-am="Programming Logic, Variables, Functions, DOM, Events እና Asynchronous JavaScript ተማር።" data-en="Learn programming logic, variables, functions, DOM, events and asynchronous JavaScript.">Programming Logic, Variables, Functions, DOM, Events እና Asynchronous JavaScript ተማር።</p>
+        <div class="course-meta"><span>Beginner</span><span>JavaScript</span></div>
+        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
+        <div class="course-details">
+          <h4>Curriculum</h4>
+          <ul>
+            <li>JavaScript Introduction</li>
+            <li>Variables and Data Types</li>
+            <li>Operators and Conditions</li>
+            <li>Loops and Functions</li>
+            <li>Arrays and Objects</li>
+            <li>DOM and Events</li>
+            <li>Fetch API and Promises</li>
+            <li>Practical Project: Interactive App</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="course" data-category="frontend">
+      <div class="course-top">
+        <div class="course-icon">⚛️</div>
+        <small>FRONTEND • 04</small>
+      </div>
+      <div class="course-body">
+        <h3>React Development</h3>
+        <p data-am="Modern User Interfaces በReact Components, Props, State, Hooks እና Routing ገንባ።" data-en="Build modern interfaces with React components, props, state, hooks and routing.">Modern User Interfaces በReact Components, Props, State, Hooks እና Routing ገንባ።</p>
+        <div class="course-meta"><span>Advanced</span><span>React</span></div>
+        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
+        <div class="course-details">
+          <h4>Curriculum</h4>
+          <ul>
+            <li>React Introduction and Setup</li>
+            <li>Components and JSX</li>
+            <li>Props and State</li>
+            <li>React Hooks</li>
+            <li>React Router</li>
+            <li>API Integration</li>
+            <li>Practical Project: Dashboard</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="course" data-category="backend">
+      <div class="course-top">
+        <div class="course-icon">☕</div>
+        <small>BACKEND • 01</small>
+      </div>
+      <div class="course-body">
+        <h3>Java Programming</h3>
+        <p data-am="Java Programming Fundamentals, OOP, Classes, Objects, Inheritance እና Exception Handling ተማር።" data-en="Learn Java fundamentals, OOP, classes, objects, inheritance and exception handling.">Java Programming Fundamentals, OOP, Classes, Objects, Inheritance እና Exception Handling ተማር።</p>
+        <div class="course-meta"><span>Beginner</span><span>Java</span></div>
+        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
+        <div class="course-details">
+          <h4>Curriculum</h4>
+          <ul>
+            <li>Introduction to Java and JDK</li>
+            <li>Variables and Data Types</li>
+            <li>Conditions and Loops</li>
+            <li>Methods and Arrays</li>
+            <li>Classes and Objects</li>
+            <li>Inheritance and Polymorphism</li>
+            <li>Exception Handling</li>
+            <li>Practical Project: Java Application</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="course" data-category="backend">
+      <div class="course-top">
+        <div class="course-icon">🍃</div>
+        <small>BACKEND • 02</small>
+      </div>
+      <div class="course-body">
+        <h3>Spring Boot</h3>
+        <p data-am="Java Backend Development, REST Controllers, Services, Repositories እና Security ተማር።" data-en="Learn Java backend development, REST controllers, services, repositories and security.">Java Backend Development, REST Controllers, Services, Repositories እና Security ተማር።</p>
+        <div class="course-meta"><span>Advanced</span><span>Spring Boot</span></div>
+        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
+        <div class="course-details">
+          <h4>Curriculum</h4>
+          <ul>
+            <li>Spring Boot Introduction</li>
+            <li>Project Setup and Dependencies</li>
+            <li>Controllers and Services</li>
+            <li>Spring Data JPA</li>
+            <li>REST API Development</li>
+            <li>Validation and Exception Handling</li>
+            <li>Spring Security and Authentication</li>
+            <li>Practical Project: REST Backend</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="course" data-category="backend">
+      <div class="course-top">
+        <div class="course-icon">🗄️</div>
+        <small>BACKEND • 03</small>
+      </div>
+      <div class="course-body">
+        <h3>Database & PostgreSQL</h3>
+        <p data-am="Database Design, SQL, Tables, Relationships, Joins እና Database Management ተማር።" data-en="Learn database design, SQL, tables, relationships, joins and database management.">Database Design, SQL, Tables, Relationships, Joins እና Database Management ተማር።</p>
+        <div class="course-meta"><span>Intermediate</span><span>SQL</span></div>
+        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
+        <div class="course-details">
+          <h4>Curriculum</h4>
+          <ul>
+            <li>Database Fundamentals</li>
+            <li>SQL Basics</li>
+            <li>CREATE, INSERT, UPDATE, DELETE</li>
+            <li>Primary and Foreign Keys</li>
+            <li>JOIN and Relationships</li>
+            <li>Database Normalization</li>
+            <li>PostgreSQL Administration</li>
+            <li>Practical Project: Database Design</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="course" data-category="fullstack">
+      <div class="course-top">
+        <div class="course-icon">🚀</div>
+        <small>FULL STACK • 01</small>
+      </div>
+      <div class="course-body">
+        <h3>Full Stack Development</h3>
+        <p data-am="Frontend, Backend እና Database በማጣመር ሙሉ Web Application ገንባ።" data-en="Combine frontend, backend and database to build complete web applications.">Frontend, Backend እና Database በማጣመር ሙሉ Web Application ገንባ።</p>
+        <div class="course-meta"><span>Professional</span><span>Full Stack</span></div>
+        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
+        <div class="course-details">
+          <h4>Curriculum</h4>
+          <ul>
+            <li>Frontend Application Development</li>
+            <li>Backend API Development</li>
+            <li>Database Integration</li>
+            <li>Authentication and Authorization</li>
+            <li>Frontend and Backend Connection</li>
+            <li>Testing and Debugging</li>
+            <li>Deployment and Hosting</li>
+            <li>Final Project: Student Management System</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="no-results" id="noResults">No courses found. Try another search.</p>
+
+</div>
+</section>
+
+<!-- LEARNING PATH -->
+<section id="path">
+<div class="container">
+  <h2 class="section-title" data-am="የመማሪያ መንገድ" data-en="Your Learning Journey">የመማሪያ መንገድ</h2>
+  <p class="section-desc" data-am="እውቀትህን በደረጃ ገንባ።" data-en="Build your knowledge step by step.">እውቀትህን በደረጃ ገንባ።</p>
+
+  <div class="path">
+    <div class="path-item">
+      <h3>01. Beginner</h3>
+      <p data-am="የProgramming መሠረታዊ እውቀት፣ Syntax, Variables, HTML እና CSS።" data-en="Programming fundamentals, syntax, variables, HTML and CSS.">የProgramming መሠረታዊ እውቀት፣ Syntax, Variables, HTML እና CSS።</p>
+    </div>
+    <div class="path-item">
+      <h3>02. Intermediate</h3>
+      <p data-am="JavaScript, React, Java, Database እና APIs።" data-en="JavaScript, React, Java, databases and APIs.">JavaScript, React, Java, Database እና APIs።</p>
+    </div>
+    <div class="path-item">
+      <h3>03. Advanced</h3>
+      <p data-am="Spring Boot, Security, Full Stack Projects እና Deployment።" data-en="Spring Boot, security, full stack projects and deployment.">Spring Boot, Security, Full Stack Projects እና Deployment።</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section>
+<div class="container">
+  <h2 class="section-title" data-am="የትምህርት አቀራረባችን" data-en="Our Learning Approach">የትምህርት አቀራረባችን</h2>
+
+  <div class="features">
+    <div class="feature">
+      <h3>📖 Step-by-Step Lessons</h3>
+      <p data-am="ከቀላል ወደ ከባድ በተደራጀ መንገድ መማር።" data-en="Learn in a structured sequence from simple to complex topics.">ከቀላል ወደ ከባድ በተደራጀ መንገድ መማር።</p>
+    </div>
+    <div class="feature">
+      <h3>💻 Practical Coding</h3>
+      <p data-am="በCode Examples እና Practical Exercises መለማመድ።" data-en="Practice with code examples and practical exercises.">በCode Examples እና Practical Exercises መለማመድ።</p>
+    </div>
+    <div class="feature">
+      <h3>📝 Quizzes & Exams</h3>
+      <p data-am="የተማርከውን በQuiz እና Exams መፈተሽ።" data-en="Test your knowledge with quizzes and exams.">የተማርከውን በQuiz እና Exams መፈተሽ።</p>
+    </div>
+    <div class="feature">
+      <h3>🏆 Real Projects</h3>
+      <p data-am="በእውነተኛ ፕሮጀክቶች ተግባራዊ ችሎታ ማግኘት።" data-en="Gain practical skills through real-world projects.">በእውነተኛ ፕሮጀክቶች ተግባራዊ ችሎታ ማግኘት።</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="container">
+  <h2 class="section-title" data-am="አግኙን" data-en="Contact Us">አግኙን</h2>
+  <div class="feature">
+    <p data-am="ስለ ትምህርቶቻችን ጥያቄ ካለዎት በኢሜይል ያግኙን።" data-en="For questions about our learning platform, contact us by email.">ስለ ትምህርቶቻችን ጥያቄ ካለዎት በኢሜይል ያግኙን።</p>
+    <a class="footer-link" href="mailto:Wondayehualemu@gmail.com">Wondayehualemu@gmail.com</a>
+  </div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">
+  <p>© 2026 <span>ALEMU U PROJECT</span>. All Rights Reserved.</p>
+  <a class="footer-link" href="index.html">← Back to Personal Website</a>
+</div>
+</footer>
+
+<script>
+/* LANGUAGE SWITCHER */
+let english = false;
+
+function toggleLanguage() {
+  english = !english;
+
+  document.querySelectorAll("[data-am][data-en]").forEach(el => {
+    el.textContent = english
+      ? el.getAttribute("data-en")
+      : el.getAttribute("data-am");
+  });
+
+  document.documentElement.lang = english ? "en" : "am";
+  document.getElementById("langBtn").textContent =
+    english ? "አማርኛ" : "English";
+
+  document.getElementById("courseSearch").placeholder =
+    english ? "Search courses..." : "ትምህርቶችን ፈልግ...";
+}
+
+/* COURSE CURRICULUM */
+function showDetails(button) {
+  const details = button.nextElementSibling;
+  details.classList.toggle("open");
+
+  const isOpen = details.classList.contains("open");
+
+  button.textContent = isOpen
+    ? (english ? "Hide Curriculum" : "ዝርዝሩን ዝጋ")
+    : (english ? "View Curriculum" : "የትምህርት ዝርዝር");
+}
+
+/* COURSE FILTER */
+let currentFilter = "all";
+
+function filterCourses() {
+  const query = document.getElementById("courseSearch")
+    .value.toLowerCase();
+
+  let visible = 0;
+
+  document.querySelectorAll(".course").forEach(course => {
+    const category = course.dataset.category;
+    const matchesCategory =
+      currentFilter === "all" || category === currentFilter;
+
+    const matchesSearch =
+      course.textContent.toLowerCase().includes(query);
+
+    const show = matchesCategory && matchesSearch;
+
+    course.style.display = show ? "" : "none";
+
+    if (show) visible++;
+  });
+
+  document.getElementById("noResults").style.display =
+    visible === 0 ? "block" : "none";
+}
+
+document.querySelectorAll(".filter").forEach(button => {
+  button.addEventListener("click", () => {
+    currentFilter = button.dataset.filter;
+
+    document.querySelectorAll(".filter").forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    filterCourses();
+  });
+});
+
+document.getElementById("courseSearch")
+  .addEventListener("input", filterCourses);
+</script>
+
+</body>
+</html>
