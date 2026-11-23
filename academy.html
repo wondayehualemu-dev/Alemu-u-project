@@ -1,785 +1,160 @@
-
 <!DOCTYPE html>
 <html lang="am">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Alemu U Project Learning Academy - Learn Frontend, Backend and Full Stack Development from Beginner to Professional.">
+<meta name="description" content="Alemu U Project Learning Academy — learn Frontend, Backend and Full Stack development step by step.">
 <meta name="theme-color" content="#081426">
 <title>Alemu U Project | Learning Academy</title>
-
 <style>
-:root {
-  --bg:#081426;
-  --surface:#10233d;
-  --surface2:#142b49;
-  --gold:#e9bd65;
-  --text:#f5f7fb;
-  --muted:#b8c5d6;
-  --border:#263a55;
-  --blue:#2588ed;
-}
-* {box-sizing:border-box;margin:0;padding:0}
-html {scroll-behavior:smooth}
-body {
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,sans-serif;
-  line-height:1.7;
-}
-a {text-decoration:none;color:inherit}
-button,input {font:inherit}
-.container {width:min(1150px,90%);margin:auto}
-
-/* HEADER */
-header {
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:#0d1d34f5;
-  border-bottom:1px solid var(--border);
-  backdrop-filter:blur(12px);
-}
-.navbar {
-  min-height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-}
-.logo {font-size:24px;font-weight:bold;color:var(--gold)}
-nav {display:flex;gap:22px;flex-wrap:wrap}
-nav a {font-size:14px;color:var(--muted)}
-nav a:hover {color:var(--gold)}
-.lang {
-  padding:10px 17px;
-  background:var(--gold);
-  border:0;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* HERO */
-.hero {
-  padding:85px 0 70px;
-  text-align:center;
-  background:radial-gradient(ellipse at top,#19375b 0%,var(--bg) 65%);
-}
-.tag {
-  display:inline-block;
-  color:var(--gold);
-  border:1px solid #e9bd6570;
-  background:#e9bd6510;
-  padding:7px 17px;
-  border-radius:30px;
-  font-size:13px;
-  margin-bottom:22px;
-}
-.hero h1 {
-  font-size:clamp(36px,6vw,65px);
-  line-height:1.2;
-  margin-bottom:20px;
-}
-.hero h1 span {color:var(--gold)}
-.hero p {
-  color:var(--muted);
-  max-width:700px;
-  margin:0 auto 28px;
-  font-size:18px;
-}
-.btn {
-  display:inline-block;
-  padding:13px 24px;
-  border-radius:8px;
-  font-weight:bold;
-  transition:.3s;
-}
-.primary {background:var(--gold);color:var(--bg)}
-.secondary {border:1px solid var(--gold);color:var(--gold)}
-.btn:hover {transform:translateY(-3px)}
-.hero-buttons {display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-
-/* STATS */
-.stats {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  padding:25px 0;
-}
-.stat {
-  text-align:center;
-  padding:20px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:12px;
-}
-.stat h3 {font-size:28px;color:var(--gold)}
-.stat p {font-size:14px;color:var(--muted)}
-
-/* SECTIONS */
-section {padding:65px 0}
-.section-title {
-  font-size:32px;
-  color:var(--gold);
-  margin-bottom:10px;
-}
-.section-desc {color:var(--muted);margin-bottom:30px}
-
-/* COURSE CATEGORIES */
-.categories {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-}
-.category {
-  background:var(--surface);
-  border:1px solid var(--border);
-  padding:28px;
-  border-radius:15px;
-  transition:.3s;
-}
-.category:hover {
-  transform:translateY(-6px);
-  border-color:var(--gold);
-}
-.category-icon {font-size:36px;margin-bottom:12px}
-.category h3 {color:var(--gold);font-size:21px;margin-bottom:10px}
-.category p {color:var(--muted);font-size:14px}
-.category a {
-  display:inline-block;
-  margin-top:18px;
-  color:var(--gold);
-  font-weight:bold;
-}
-
-/* SEARCH */
-.search-area {
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:25px;
-}
-.search-area input {
-  flex:1;
-  min-width:220px;
-  padding:14px 17px;
-  background:var(--surface);
-  color:white;
-  border:1px solid var(--border);
-  border-radius:9px;
-  outline:none;
-}
-.search-area input:focus {border-color:var(--gold)}
-.filters {display:flex;gap:9px;flex-wrap:wrap}
-.filter {
-  padding:10px 15px;
-  border:1px solid var(--border);
-  border-radius:8px;
-  background:var(--surface);
-  color:var(--text);
-  cursor:pointer;
-}
-.filter.active,.filter:hover {
-  background:var(--gold);
-  color:var(--bg);
-}
-
-/* COURSES */
-.course-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-}
-.course {
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:14px;
-  overflow:hidden;
-  transition:.3s;
-}
-.course:hover {
-  transform:translateY(-5px);
-  border-color:var(--gold);
-}
-.course-top {
-  padding:23px;
-  background:var(--surface2);
-}
-.course-icon {font-size:35px}
-.course-top small {color:var(--gold);font-weight:bold}
-.course-body {padding:22px}
-.course h3 {font-size:21px;margin:8px 0}
-.course p {font-size:14px;color:var(--muted)}
-.course-meta {
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin:15px 0;
-}
-.course-meta span {
-  background:#203b5d;
-  padding:5px 9px;
-  border-radius:5px;
-  font-size:11px;
-  color:var(--muted);
-}
-.details-btn {
-  display:block;
-  width:100%;
-  padding:11px;
-  background:var(--gold);
-  color:var(--bg);
-  border:0;
-  border-radius:7px;
-  font-weight:bold;
-  cursor:pointer;
-}
-.course-details {
-  display:none;
-  margin-top:16px;
-  padding:15px;
-  border-top:1px solid var(--border);
-}
-.course-details.open {display:block}
-.course-details h4 {color:var(--gold);margin-bottom:8px}
-.course-details ul {padding-left:20px;color:var(--muted);font-size:13px}
-.no-results {
-  display:none;
-  color:var(--muted);
-  padding:25px;
-  text-align:center;
-}
-
-/* LEARNING PATH */
-.path {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-.path-item {
-  padding:24px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:12px;
-}
-.path-item h3 {color:var(--gold);margin-bottom:8px}
-.path-item p {font-size:14px;color:var(--muted)}
-
-/* FEATURES */
-.features {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-.feature {
-  padding:22px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:12px;
-}
-.feature h3 {color:var(--gold);margin-bottom:6px}
-.feature p {color:var(--muted);font-size:14px}
-
-/* FOOTER */
-footer {
-  background:#0d1d34;
-  border-top:1px solid var(--border);
-  padding:35px 0;
-  text-align:center;
-}
-footer p {color:var(--muted);font-size:14px}
-footer span {color:var(--gold)}
-.footer-link {color:var(--gold);display:inline-block;margin-top:12px}
-
-/* MOBILE */
-@media(max-width:850px) {
-  .navbar {flex-wrap:wrap;padding:15px 0;justify-content:center}
-  nav {justify-content:center;gap:14px}
-  .categories,.course-grid,.path {grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:550px) {
-  .categories,.course-grid,.path,.features {grid-template-columns:1fr}
-  .stats {grid-template-columns:1fr}
-  .hero {padding:55px 0}
-  .hero p {font-size:16px}
-  .section-title {font-size:27px}
-}
+:root{--bg:#081426;--surface:#10233d;--surface2:#142b49;--gold:#e9bd65;--text:#f5f7fb;--muted:#b8c5d6;--border:#263a55;--blue:#2588ed;--green:#36c98f}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.7}a{text-decoration:none;color:inherit}button,input{font:inherit}button{cursor:pointer}.container{width:min(1150px,92%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:#0d1d34f5;border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+.navbar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.logo{font-size:23px;font-weight:bold;color:var(--gold)}nav{display:flex;gap:20px;flex-wrap:wrap}nav a{font-size:14px;color:var(--muted)}nav a:hover{color:var(--gold)}
+.lang,.btn,.filter,.details-btn,.action{border:0;border-radius:8px;padding:11px 16px;font-weight:bold}.lang{background:var(--gold);color:var(--bg)}
+.hero{padding:76px 0 58px;text-align:center;background:radial-gradient(ellipse at top,#19375b 0%,var(--bg) 68%)}.tag{display:inline-block;color:var(--gold);border:1px solid #e9bd6570;background:#e9bd6510;padding:6px 15px;border-radius:30px;font-size:13px;margin-bottom:20px}.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.2;margin-bottom:18px}.gold{color:var(--gold)}.hero p{color:var(--muted);max-width:760px;margin:0 auto 25px;font-size:17px}.hero-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.btn.primary,.action{background:var(--gold);color:var(--bg)}.btn.secondary{border:1px solid var(--gold);color:var(--gold)}.btn:hover,.action:hover,.details-btn:hover{transform:translateY(-2px)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:22px 0}.stat,.category,.course,.path-item,.feature,.lesson-panel{background:var(--surface);border:1px solid var(--border);border-radius:14px}.stat{text-align:center;padding:18px}.stat h3{font-size:27px;color:var(--gold)}.stat p,.muted{font-size:14px;color:var(--muted)}
+section{padding:58px 0}.section-title{font-size:clamp(25px,4vw,32px);color:var(--gold);margin-bottom:8px}.section-desc{color:var(--muted);margin-bottom:25px}
+.categories,.course-grid,.path,.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.category{padding:24px;transition:.2s}.category:hover,.course:hover{transform:translateY(-4px);border-color:var(--gold)}.category-icon{font-size:34px}.category h3{color:var(--gold);margin:8px 0}.category p{font-size:14px;color:var(--muted);min-height:50px}.category button{margin-top:15px;background:none;border:0;color:var(--gold);font-weight:bold}
+.search-area{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}.search-area input{flex:1;min-width:220px;padding:13px 15px;background:var(--surface);color:white;border:1px solid var(--border);border-radius:9px}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{background:var(--surface);color:var(--text);border:1px solid var(--border)}.filter.active,.filter:hover{background:var(--gold);color:var(--bg)}
+.course{overflow:hidden;transition:.2s}.course-top{padding:18px 21px;background:var(--surface2);display:flex;justify-content:space-between;align-items:center}.course-icon{font-size:30px}.course-top small{color:var(--gold);font-weight:bold}.course-body{padding:20px}.course h3{font-size:19px;margin-bottom:7px}.course p{font-size:14px;color:var(--muted);min-height:48px}.course-meta{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0}.course-meta span{background:#203b5d;padding:4px 8px;border-radius:5px;font-size:11px;color:var(--muted)}.details-btn{width:100%;background:var(--gold);color:var(--bg);transition:.2s}.no-results{display:none;text-align:center;padding:25px;color:var(--muted)}
+.path-item,.feature{padding:21px}.path-item h3,.feature h3{color:var(--gold);margin-bottom:7px}.path-item p,.feature p{font-size:14px;color:var(--muted)}
+#learningRoom{display:none;padding:35px 0 65px;background:#0b1a2d;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}#learningRoom.visible{display:block}.room-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}.room-head h2{color:var(--gold)}.room-layout{display:grid;grid-template-columns:290px 1fr;gap:18px}.lesson-list,.lesson-panel{padding:18px}.lesson-list h3{color:var(--gold);margin-bottom:12px}.lesson-link{display:block;width:100%;text-align:left;margin:7px 0;padding:10px 12px;background:#0b1a2d;color:var(--muted);border:1px solid var(--border);border-radius:8px}.lesson-link.active,.lesson-link:hover{border-color:var(--gold);color:var(--gold)}.lesson-panel h3{font-size:24px;color:var(--gold);margin-bottom:12px}.lesson-panel h4{color:var(--gold);margin:18px 0 6px}.lesson-panel p,.lesson-panel li{color:var(--muted);margin-bottom:8px}.lesson-panel ul{padding-left:22px}.code{white-space:pre-wrap;overflow-wrap:anywhere;background:#050d19;color:#dce9fa;border:1px solid var(--border);padding:15px;border-radius:9px;font-family:Consolas,monospace;font-size:13px;margin:12px 0}.lesson-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.action.secondary{background:transparent;border:1px solid var(--gold);color:var(--gold)}.quiz{margin-top:22px;padding:16px;background:#0b1a2d;border:1px solid var(--border);border-radius:10px}.quiz label{display:block;color:var(--muted);margin:8px 0}.quiz-result{margin-top:10px;color:var(--green);font-weight:bold}
+footer{background:#0d1d34;border-top:1px solid var(--border);padding:30px 0;text-align:center}footer p{color:var(--muted);font-size:14px}footer span{color:var(--gold)}
+@media(max-width:850px){.navbar{padding:12px 0;flex-wrap:wrap;justify-content:center}nav{justify-content:center;gap:12px}.categories,.course-grid,.path{grid-template-columns:repeat(2,1fr)}.room-layout{grid-template-columns:1fr}}
+@media(max-width:560px){.categories,.course-grid,.path,.features,.stats{grid-template-columns:1fr}.hero{padding:50px 0}.hero p{font-size:15px}.room-head{align-items:flex-start}}
 </style>
 </head>
-
 <body>
-
-<header>
-<div class="container navbar">
-  <a class="logo" href="#home">ALEMU U.</a>
-
-  <nav>
-    <a href="#home" data-am="መነሻ" data-en="Home">መነሻ</a>
-    <a href="#categories" data-am="የትምህርት ክፍሎች" data-en="Categories">የትምህርት ክፍሎች</a>
-    <a href="#courses" data-am="ኮርሶች" data-en="Courses">ኮርሶች</a>
-    <a href="#path" data-am="የመማሪያ መንገድ" data-en="Learning Path">የመማሪያ መንገድ</a>
-    <a href="#contact" data-am="አግኙን" data-en="Contact">አግኙን</a>
-  </nav>
-
-  <button class="lang" onclick="toggleLanguage()" id="langBtn">English</button>
-</div>
-</header>
-
+<header><div class="container navbar">
+<a class="logo" href="#home">ALEMU U.</a>
+<nav>
+<a href="#home" data-am="መነሻ" data-en="Home">መነሻ</a>
+<a href="#categories" data-am="የትምህርት ክፍሎች" data-en="Categories">የትምህርት ክፍሎች</a>
+<a href="#courses" data-am="ኮርሶች" data-en="Courses">ኮርሶች</a>
+<a href="#path" data-am="የመማሪያ መንገድ" data-en="Learning Path">የመማሪያ መንገድ</a>
+<a href="#contact" data-am="አግኙን" data-en="Contact">አግኙን</a>
+</nav><button class="lang" id="langBtn" onclick="toggleLanguage()">English</button>
+</div></header>
 <main>
-
-<!-- HERO -->
-<section class="hero" id="home">
-<div class="container">
-  <div class="tag">WELCOME TO ALEM U PROJECT</div>
-
-  <h1>
-    <span data-am="ከዜሮ ጀምረህ" data-en="Start From Zero">ከዜሮ ጀምረህ</span>
-    <br>
-    <span data-am="Developer ሁን!" data-en="Become a Developer!">Developer ሁን!</span>
-  </h1>
-
-  <p
-    data-am="Frontend, Backend እና Full Stack Development በአማርኛ ማብራሪያና English Technical Terms ከመሠረቱ እስከ Advanced ድረስ ተማር።"
-    data-en="Learn Frontend, Backend and Full Stack Development from the basics to advanced levels with practical lessons and projects.">
-    Frontend, Backend እና Full Stack Development በአማርኛ ማብራሪያና English Technical Terms ከመሠረቱ እስከ Advanced ድረስ ተማር።
-  </p>
-
-  <div class="hero-buttons">
-    <a href="#courses" class="btn primary" data-am="ትምህርት ጀምር" data-en="Start Learning">ትምህርት ጀምር</a>
-    <a href="#categories" class="btn secondary" data-am="ኮርሶችን ተመልከት" data-en="Explore Courses">ኮርሶችን ተመልከት</a>
-  </div>
-</div>
-</section>
-
-<!-- STATS -->
-<div class="container stats">
-  <div class="stat">
-    <h3>03</h3>
-    <p data-am="ዋና የትምህርት መንገዶች" data-en="Learning Paths">ዋና የትምህርት መንገዶች</p>
-  </div>
-  <div class="stat">
-    <h3>03</h3>
-    <p data-am="የእውቀት ደረጃዎች" data-en="Learning Levels">የእውቀት ደረጃዎች</p>
-  </div>
-  <div class="stat">
-    <h3>100%</h3>
-    <p data-am="ተግባራዊ ትምህርት ግብ" data-en="Practical Learning Goal">ተግባራዊ ትምህርት ግብ</p>
-  </div>
-</div>
-
-<!-- CATEGORIES -->
-<section id="categories">
-<div class="container">
-  <h2 class="section-title" data-am="የትምህርት ክፍሎች" data-en="Learning Categories">የትምህርት ክፍሎች</h2>
-
-  <p class="section-desc" data-am="የሚፈልጉትን የProgramming መስክ ይምረጡ።" data-en="Choose the programming field you want to learn.">የሚፈልጉትን የProgramming መስክ ይምረጡ።</p>
-
-  <div class="categories">
-
-    <div class="category">
-      <div class="category-icon">🎨</div>
-      <h3>Frontend Development</h3>
-      <p data-am="Website የሚታይ ክፍል መገንባት። HTML, CSS, JavaScript እና React ተማር።" data-en="Build the visual part of websites using HTML, CSS, JavaScript and React.">Website የሚታይ ክፍል መገንባት። HTML, CSS, JavaScript እና React ተማር።</p>
-      <a href="#courses">Explore →</a>
-    </div>
-
-    <div class="category">
-      <div class="category-icon">⚙️</div>
-      <h3>Backend Development</h3>
-      <p data-am="Server, Database, API እና Authentication መገንባት ተማር።" data-en="Learn servers, databases, APIs and authentication.">Server, Database, API እና Authentication መገንባት ተማር።</p>
-      <a href="#courses">Explore →</a>
-    </div>
-
-    <div class="category">
-      <div class="category-icon">🚀</div>
-      <h3>Full Stack Development</h3>
-      <p data-am="Frontend እና Backend በማጣመር Complete Web Applications ገንባ።" data-en="Combine frontend and backend to build complete web applications.">Frontend እና Backend በማጣመር Complete Web Applications ገንባ።</p>
-      <a href="#courses">Explore →</a>
-    </div>
-
-  </div>
-</div>
-</section>
-
-<!-- COURSES -->
-<section id="courses">
-<div class="container">
-
-  <h2 class="section-title" data-am="የትምህርት ኮርሶች" data-en="Available Courses">የትምህርት ኮርሶች</h2>
-
-  <p class="section-desc" data-am="ከBeginner እስከ Advanced የሚወስዱ የተዘጋጁ የትምህርት መንገዶች።" data-en="Structured learning paths from beginner to advanced.">ከBeginner እስከ Advanced የሚወስዱ የተዘጋጁ የትምህርት መንገዶች።</p>
-
-  <div class="search-area">
-    <input type="search" id="courseSearch" placeholder="Search courses..." aria-label="Search courses">
-    <div class="filters">
-      <button class="filter active" data-filter="all">All</button>
-      <button class="filter" data-filter="frontend">Frontend</button>
-      <button class="filter" data-filter="backend">Backend</button>
-      <button class="filter" data-filter="fullstack">Full Stack</button>
-    </div>
-  </div>
-
-  <div class="course-grid" id="courseGrid">
-
-    <article class="course" data-category="frontend">
-      <div class="course-top">
-        <div class="course-icon">🌐</div>
-        <small>FRONTEND • 01</small>
-      </div>
-      <div class="course-body">
-        <h3>HTML Fundamentals</h3>
-        <p data-am="የWeb Development መሠረት። HTML Elements, Tags, Forms እና Semantic HTML ተማር።" data-en="Learn HTML elements, tags, forms and semantic HTML from the beginning.">የWeb Development መሠረት። HTML Elements, Tags, Forms እና Semantic HTML ተማር።</p>
-        <div class="course-meta"><span>Beginner</span><span>HTML5</span></div>
-        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
-        <div class="course-details">
-          <h4>Curriculum</h4>
-          <ul>
-            <li>Introduction to Web Development</li>
-            <li>HTML Document Structure</li>
-            <li>Elements, Attributes and Headings</li>
-            <li>Links, Images and Tables</li>
-            <li>Forms and Input Types</li>
-            <li>Semantic HTML</li>
-            <li>Practical Project: Personal Web Page</li>
-          </ul>
-        </div>
-      </div>
-    </article>
-
-    <article class="course" data-category="frontend">
-      <div class="course-top">
-        <div class="course-icon">🎨</div>
-        <small>FRONTEND • 02</small>
-      </div>
-      <div class="course-body">
-        <h3>CSS Mastery</h3>
-        <p data-am="Website በሚያምር መልኩ ማቅረብ። Colors, Layout, Flexbox, Grid እና Responsive Design ተማር።" data-en="Master styling, colors, layouts, Flexbox, Grid and responsive design.">Website በሚያምር መልኩ ማቅረብ። Colors, Layout, Flexbox, Grid እና Responsive Design ተማር።</p>
-        <div class="course-meta"><span>Beginner</span><span>CSS3</span></div>
-        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
-        <div class="course-details">
-          <h4>Curriculum</h4>
-          <ul>
-            <li>CSS Syntax and Selectors</li>
-            <li>Colors, Fonts and Backgrounds</li>
-            <li>Box Model and Positioning</li>
-            <li>Flexbox Layout</li>
-            <li>CSS Grid</li>
-            <li>Responsive Design and Media Queries</li>
-            <li>Practical Project: Responsive Website</li>
-          </ul>
-        </div>
-      </div>
-    </article>
-
-    <article class="course" data-category="frontend">
-      <div class="course-top">
-        <div class="course-icon">💛</div>
-        <small>FRONTEND • 03</small>
-      </div>
-      <div class="course-body">
-        <h3>JavaScript Programming</h3>
-        <p data-am="Programming Logic, Variables, Functions, DOM, Events እና Asynchronous JavaScript ተማር።" data-en="Learn programming logic, variables, functions, DOM, events and asynchronous JavaScript.">Programming Logic, Variables, Functions, DOM, Events እና Asynchronous JavaScript ተማር።</p>
-        <div class="course-meta"><span>Beginner</span><span>JavaScript</span></div>
-        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
-        <div class="course-details">
-          <h4>Curriculum</h4>
-          <ul>
-            <li>JavaScript Introduction</li>
-            <li>Variables and Data Types</li>
-            <li>Operators and Conditions</li>
-            <li>Loops and Functions</li>
-            <li>Arrays and Objects</li>
-            <li>DOM and Events</li>
-            <li>Fetch API and Promises</li>
-            <li>Practical Project: Interactive App</li>
-          </ul>
-        </div>
-      </div>
-    </article>
-
-    <article class="course" data-category="frontend">
-      <div class="course-top">
-        <div class="course-icon">⚛️</div>
-        <small>FRONTEND • 04</small>
-      </div>
-      <div class="course-body">
-        <h3>React Development</h3>
-        <p data-am="Modern User Interfaces በReact Components, Props, State, Hooks እና Routing ገንባ።" data-en="Build modern interfaces with React components, props, state, hooks and routing.">Modern User Interfaces በReact Components, Props, State, Hooks እና Routing ገንባ።</p>
-        <div class="course-meta"><span>Advanced</span><span>React</span></div>
-        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
-        <div class="course-details">
-          <h4>Curriculum</h4>
-          <ul>
-            <li>React Introduction and Setup</li>
-            <li>Components and JSX</li>
-            <li>Props and State</li>
-            <li>React Hooks</li>
-            <li>React Router</li>
-            <li>API Integration</li>
-            <li>Practical Project: Dashboard</li>
-          </ul>
-        </div>
-      </div>
-    </article>
-
-    <article class="course" data-category="backend">
-      <div class="course-top">
-        <div class="course-icon">☕</div>
-        <small>BACKEND • 01</small>
-      </div>
-      <div class="course-body">
-        <h3>Java Programming</h3>
-        <p data-am="Java Programming Fundamentals, OOP, Classes, Objects, Inheritance እና Exception Handling ተማር።" data-en="Learn Java fundamentals, OOP, classes, objects, inheritance and exception handling.">Java Programming Fundamentals, OOP, Classes, Objects, Inheritance እና Exception Handling ተማር።</p>
-        <div class="course-meta"><span>Beginner</span><span>Java</span></div>
-        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
-        <div class="course-details">
-          <h4>Curriculum</h4>
-          <ul>
-            <li>Introduction to Java and JDK</li>
-            <li>Variables and Data Types</li>
-            <li>Conditions and Loops</li>
-            <li>Methods and Arrays</li>
-            <li>Classes and Objects</li>
-            <li>Inheritance and Polymorphism</li>
-            <li>Exception Handling</li>
-            <li>Practical Project: Java Application</li>
-          </ul>
-        </div>
-      </div>
-    </article>
-
-    <article class="course" data-category="backend">
-      <div class="course-top">
-        <div class="course-icon">🍃</div>
-        <small>BACKEND • 02</small>
-      </div>
-      <div class="course-body">
-        <h3>Spring Boot</h3>
-        <p data-am="Java Backend Development, REST Controllers, Services, Repositories እና Security ተማር።" data-en="Learn Java backend development, REST controllers, services, repositories and security.">Java Backend Development, REST Controllers, Services, Repositories እና Security ተማር።</p>
-        <div class="course-meta"><span>Advanced</span><span>Spring Boot</span></div>
-        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
-        <div class="course-details">
-          <h4>Curriculum</h4>
-          <ul>
-            <li>Spring Boot Introduction</li>
-            <li>Project Setup and Dependencies</li>
-            <li>Controllers and Services</li>
-            <li>Spring Data JPA</li>
-            <li>REST API Development</li>
-            <li>Validation and Exception Handling</li>
-            <li>Spring Security and Authentication</li>
-            <li>Practical Project: REST Backend</li>
-          </ul>
-        </div>
-      </div>
-    </article>
-
-    <article class="course" data-category="backend">
-      <div class="course-top">
-        <div class="course-icon">🗄️</div>
-        <small>BACKEND • 03</small>
-      </div>
-      <div class="course-body">
-        <h3>Database & PostgreSQL</h3>
-        <p data-am="Database Design, SQL, Tables, Relationships, Joins እና Database Management ተማር።" data-en="Learn database design, SQL, tables, relationships, joins and database management.">Database Design, SQL, Tables, Relationships, Joins እና Database Management ተማር።</p>
-        <div class="course-meta"><span>Intermediate</span><span>SQL</span></div>
-        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
-        <div class="course-details">
-          <h4>Curriculum</h4>
-          <ul>
-            <li>Database Fundamentals</li>
-            <li>SQL Basics</li>
-            <li>CREATE, INSERT, UPDATE, DELETE</li>
-            <li>Primary and Foreign Keys</li>
-            <li>JOIN and Relationships</li>
-            <li>Database Normalization</li>
-            <li>PostgreSQL Administration</li>
-            <li>Practical Project: Database Design</li>
-          </ul>
-        </div>
-      </div>
-    </article>
-
-    <article class="course" data-category="fullstack">
-      <div class="course-top">
-        <div class="course-icon">🚀</div>
-        <small>FULL STACK • 01</small>
-      </div>
-      <div class="course-body">
-        <h3>Full Stack Development</h3>
-        <p data-am="Frontend, Backend እና Database በማጣመር ሙሉ Web Application ገንባ።" data-en="Combine frontend, backend and database to build complete web applications.">Frontend, Backend እና Database በማጣመር ሙሉ Web Application ገንባ።</p>
-        <div class="course-meta"><span>Professional</span><span>Full Stack</span></div>
-        <button class="details-btn" onclick="showDetails(this)" data-am="የትምህርት ዝርዝር" data-en="View Curriculum">የትምህርት ዝርዝር</button>
-        <div class="course-details">
-          <h4>Curriculum</h4>
-          <ul>
-            <li>Frontend Application Development</li>
-            <li>Backend API Development</li>
-            <li>Database Integration</li>
-            <li>Authentication and Authorization</li>
-            <li>Frontend and Backend Connection</li>
-            <li>Testing and Debugging</li>
-            <li>Deployment and Hosting</li>
-            <li>Final Project: Student Management System</li>
-          </ul>
-        </div>
-      </div>
-    </article>
-
-  </div>
-
-  <p class="no-results" id="noResults">No courses found. Try another search.</p>
-
-</div>
-</section>
-
-<!-- LEARNING PATH -->
-<section id="path">
-<div class="container">
-  <h2 class="section-title" data-am="የመማሪያ መንገድ" data-en="Your Learning Journey">የመማሪያ መንገድ</h2>
-  <p class="section-desc" data-am="እውቀትህን በደረጃ ገንባ።" data-en="Build your knowledge step by step.">እውቀትህን በደረጃ ገንባ።</p>
-
-  <div class="path">
-    <div class="path-item">
-      <h3>01. Beginner</h3>
-      <p data-am="የProgramming መሠረታዊ እውቀት፣ Syntax, Variables, HTML እና CSS።" data-en="Programming fundamentals, syntax, variables, HTML and CSS.">የProgramming መሠረታዊ እውቀት፣ Syntax, Variables, HTML እና CSS።</p>
-    </div>
-    <div class="path-item">
-      <h3>02. Intermediate</h3>
-      <p data-am="JavaScript, React, Java, Database እና APIs።" data-en="JavaScript, React, Java, databases and APIs.">JavaScript, React, Java, Database እና APIs።</p>
-    </div>
-    <div class="path-item">
-      <h3>03. Advanced</h3>
-      <p data-am="Spring Boot, Security, Full Stack Projects እና Deployment።" data-en="Spring Boot, security, full stack projects and deployment.">Spring Boot, Security, Full Stack Projects እና Deployment።</p>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- FEATURES -->
-<section>
-<div class="container">
-  <h2 class="section-title" data-am="የትምህርት አቀራረባችን" data-en="Our Learning Approach">የትምህርት አቀራረባችን</h2>
-
-  <div class="features">
-    <div class="feature">
-      <h3>📖 Step-by-Step Lessons</h3>
-      <p data-am="ከቀላል ወደ ከባድ በተደራጀ መንገድ መማር።" data-en="Learn in a structured sequence from simple to complex topics.">ከቀላል ወደ ከባድ በተደራጀ መንገድ መማር።</p>
-    </div>
-    <div class="feature">
-      <h3>💻 Practical Coding</h3>
-      <p data-am="በCode Examples እና Practical Exercises መለማመድ።" data-en="Practice with code examples and practical exercises.">በCode Examples እና Practical Exercises መለማመድ።</p>
-    </div>
-    <div class="feature">
-      <h3>📝 Quizzes & Exams</h3>
-      <p data-am="የተማርከውን በQuiz እና Exams መፈተሽ።" data-en="Test your knowledge with quizzes and exams.">የተማርከውን በQuiz እና Exams መፈተሽ።</p>
-    </div>
-    <div class="feature">
-      <h3>🏆 Real Projects</h3>
-      <p data-am="በእውነተኛ ፕሮጀክቶች ተግባራዊ ችሎታ ማግኘት።" data-en="Gain practical skills through real-world projects.">በእውነተኛ ፕሮጀክቶች ተግባራዊ ችሎታ ማግኘት።</p>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-<div class="container">
-  <h2 class="section-title" data-am="አግኙን" data-en="Contact Us">አግኙን</h2>
-  <div class="feature">
-    <p data-am="ስለ ትምህርቶቻችን ጥያቄ ካለዎት በኢሜይል ያግኙን።" data-en="For questions about our learning platform, contact us by email.">ስለ ትምህርቶቻችን ጥያቄ ካለዎት በኢሜይል ያግኙን።</p>
-    <a class="footer-link" href="mailto:Wondayehualemu@gmail.com">Wondayehualemu@gmail.com</a>
-  </div>
-</div>
-</section>
-
-</main>
-
-<footer>
-<div class="container">
-  <p>© 2026 <span>ALEMU U PROJECT</span>. All Rights Reserved.</p>
-  <a class="footer-link" href="index.html">← Back to Personal Website</a>
-</div>
-</footer>
-
+<section class="hero" id="home"><div class="container">
+<div class="tag">WELCOME TO ALEM U PROJECT</div>
+<h1><span class="gold" data-am="ከዜሮ ጀምረህ" data-en="Start From Zero">ከዜሮ ጀምረህ</span><br><span class="gold" data-am="Developer ሁን!" data-en="Become a Developer!">Developer ሁን!</span></h1>
+<p data-am="Frontend, Backend እና Full Stack Development በአማርኛ ማብራሪያና English Technical Terms ከመሠረቱ እስከ Advanced ድረስ ተማር።" data-en="Learn Frontend, Backend and Full Stack Development from the basics to advanced levels with practical lessons and projects.">Frontend, Backend እና Full Stack Development በአማርኛ ማብራሪያና English Technical Terms ከመሠረቱ እስከ Advanced ድረስ ተማር።</p>
+<div class="hero-buttons"><a href="#courses" class="btn primary" data-am="ትምህርት ጀምር" data-en="Start Learning">ትምህርት ጀምር</a><a href="#categories" class="btn secondary" data-am="ኮርሶችን ተመልከት" data-en="Explore Courses">ኮርሶችን ተመልከት</a></div>
+</div></section>
+<div class="container stats"><div class="stat"><h3>03</h3><p data-am="ዋና የትምህርት መንገዶች" data-en="Learning Paths">ዋና የትምህርት መንገዶች</p></div><div class="stat"><h3>03</h3><p data-am="የእውቀት ደረጃዎች" data-en="Learning Levels">የእውቀት ደረጃዎች</p></div><div class="stat"><h3>100%</h3><p data-am="ተግባራዊ ትምህርት ግብ" data-en="Practical Learning Goal">ተግባራዊ ትምህርት ግብ</p></div></div>
+<section id="categories"><div class="container"><h2 class="section-title" data-am="የትምህርት ክፍሎች" data-en="Learning Categories">የትምህርት ክፍሎች</h2><p class="section-desc" data-am="የሚፈልጉትን የProgramming መስክ ይምረጡ።" data-en="Choose the programming field you want to learn.">የሚፈልጉትን የProgramming መስክ ይምረጡ።</p>
+<div class="categories">
+<div class="category"><div class="category-icon">🎨</div><h3>Frontend Development</h3><p data-am="Website የሚታይ ክፍል መገንባት። HTML, CSS, JavaScript እና React ተማር።" data-en="Build the visual part of websites using HTML, CSS, JavaScript and React.">Website የሚታይ ክፍል መገንባት። HTML, CSS, JavaScript እና React ተማር።</p><button onclick="selectFilter('frontend')">Explore →</button></div>
+<div class="category"><div class="category-icon">⚙️</div><h3>Backend Development</h3><p data-am="Server, Database, API እና Authentication መገንባት ተማር።" data-en="Learn servers, databases, APIs and authentication.">Server, Database, API እና Authentication መገንባት ተማር።</p><button onclick="selectFilter('backend')">Explore →</button></div>
+<div class="category"><div class="category-icon">🚀</div><h3>Full Stack Development</h3><p data-am="Frontend እና Backend በማጣመር Complete Web Applications ገንባ።" data-en="Combine frontend and backend to build complete web applications.">Frontend እና Backend በማጣመር Complete Web Applications ገንባ።</p><button onclick="selectFilter('fullstack')">Explore →</button></div>
+</div></div></section>
+<section id="courses"><div class="container"><h2 class="section-title" data-am="የትምህርት ኮርሶች" data-en="Available Courses">የትምህርት ኮርሶች</h2><p class="section-desc" data-am="ኮርስ ምረጥ፤ ትምህርቱን ክፈት፤ በደረጃ ተማር።" data-en="Choose a course, open its lessons and study step by step.">ኮርስ ምረጥ፤ ትምህርቱን ክፈት፤ በደረጃ ተማር።</p>
+<div class="search-area"><input id="courseSearch" type="search" placeholder="ትምህርቶችን ፈልግ..." aria-label="Search courses"><div class="filters">
+<button class="filter active" data-filter="all">All</button><button class="filter" data-filter="frontend">Frontend</button><button class="filter" data-filter="backend">Backend</button><button class="filter" data-filter="fullstack">Full Stack</button>
+</div></div><div class="course-grid" id="courseGrid"></div><p class="no-results" id="noResults">No courses found. Try another search.</p>
+</div></section>
+<section id="learningRoom"><div class="container"><div class="room-head"><div><div class="tag">YOUR CLASSROOM</div><h2 id="roomTitle">Course title</h2><p class="muted" id="roomSubtitle">Select a lesson to begin.</p></div><button class="action secondary" onclick="closeRoom()" data-am="ወደ ኮርሶች ተመለስ" data-en="Back to courses">ወደ ኮርሶች ተመለስ</button></div>
+<div class="room-layout"><aside class="lesson-list"><h3 data-am="የትምህርት ዝርዝር" data-en="Course Lessons">የትምህርት ዝርዝር</h3><div id="lessonLinks"></div></aside><article class="lesson-panel" id="lessonContent" aria-live="polite"></article></div>
+</div></section>
+<section id="path"><div class="container"><h2 class="section-title" data-am="የመማሪያ መንገድ" data-en="Your Learning Journey">የመማሪያ መንገድ</h2><p class="section-desc" data-am="እውቀትህን በደረጃ ገንባ።" data-en="Build your knowledge step by step.">እውቀትህን በደረጃ ገንባ።</p><div class="path">
+<div class="path-item"><h3>01. Beginner</h3><p>HTML, CSS, programming basics, variables and simple projects.</p></div><div class="path-item"><h3>02. Intermediate</h3><p>JavaScript, React, Java, databases, APIs and application structure.</p></div><div class="path-item"><h3>03. Advanced</h3><p>Backend architecture, security, testing, deployment and complete projects.</p></div>
+</div></div></section>
+<section><div class="container"><h2 class="section-title" data-am="የትምህርት አቀራረባችን" data-en="Our Learning Approach">የትምህርት አቀራረባችን</h2><div class="features">
+<div class="feature"><h3>📖 Step-by-Step Lessons</h3><p>Learn in a structured sequence from simple to complex topics.</p></div><div class="feature"><h3>💻 Practical Coding</h3><p>Practice with code examples and practical exercises.</p></div><div class="feature"><h3>📝 Quizzes & Exams</h3><p>Check your understanding with short quizzes.</p></div><div class="feature"><h3>🏆 Real Projects</h3><p>Apply your skills by building real-world applications.</p></div>
+</div></div></section>
+<section id="contact"><div class="container"><h2 class="section-title" data-am="አግኙን" data-en="Contact Us">አግኙን</h2><div class="feature"><p data-am="ስለ ትምህርቶቻችን ጥያቄ ካለዎት በኢሜይል ያግኙን።" data-en="For questions about our learning platform, contact us by email.">ስለ ትምህርቶቻችን ጥያቄ ካለዎት በኢሜይል ያግኙን።</p><a class="gold" href="mailto:Wondayehualemu@gmail.com">Wondayehualemu@gmail.com</a></div></div></section>
+</main><footer><div class="container"><p>© 2026 <span>ALEMU U PROJECT</span>. All Rights Reserved.</p><a class="gold" href="index.html">← Back to Personal Website</a></div></footer>
 <script>
-/* LANGUAGE SWITCHER */
-let english = false;
+const courses = [
+{id:'html',category:'frontend',icon:'🌐',level:'Beginner',title:'HTML Fundamentals',desc:'Build the structure of web pages with HTML5.',lessons:[
+{title:'Introduction to HTML',am:'HTML (HyperText Markup Language) የWeb page መዋቅርን የሚገነባ ቋንቋ ነው። ለምሳሌ heading፣ paragraph፣ image እና link ለማሳየት እንጠቀማለን። HTML programming language ሳይሆን markup language ነው።',en:'HTML (HyperText Markup Language) describes the structure and meaning of web content. It defines headings, paragraphs, links, images, forms and other elements. HTML is a markup language, not a programming language.',code:'<!DOCTYPE html>\\n<html lang="en">\\n<head>\\n  <meta charset="UTF-8">\\n  <title>My First Page</title>\\n</head>\\n<body>\\n  <h1>Hello, World!</h1>\\n  <p>My first web page.</p>\\n</body>\\n</html>',task:'Create an HTML file that displays your name as a heading and a short paragraph about yourself.',quiz:{q:'What does HTML mainly define?',opts:['The structure of web content','The color of the computer','The database password'],answer:0,why:'HTML describes the structure and meaning of web content.'}},
+{title:'HTML Document Structure',am:'HTML document በDOCTYPE፣ html፣ head እና body ይጀምራል። head የገጹን metadata ይይዛል፤ body ደግሞ ተጠቃሚው የሚያየውን ይይዛል።',en:'A standard HTML document contains a doctype declaration, an html root element, a head for metadata and a body for visible page content.',code:'<!DOCTYPE html>\\n<html lang="en">\\n<head>\\n  <meta charset="UTF-8">\\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\\n  <title>Page title</title>\\n</head>\\n<body>\\n  <h1>Welcome</h1>\\n</body>\\n</html>',task:'Add a title and viewport meta tag to your first HTML page.',quiz:{q:'Which element contains visible page content?',opts:['head','body','title'],answer:1,why:'The body contains the content rendered in the page.'}},
+{title:'Elements, Headings and Paragraphs',am:'Element ብዙ ጊዜ opening tag፣ content እና closing tag ይኖረዋል። h1 እስከ h6 ርዕሶችን፣ p ደግሞ paragraph ይወክላል።',en:'Elements are building blocks of HTML. Use headings h1–h6 to represent a document outline and p for paragraphs. Choose headings by meaning and hierarchy, not just visual size.',code:'<h1>My Website</h1>\\n<h2>About Me</h2>\\n<p>I am learning web development.</p>\\n<strong>Important text</strong>',task:'Create one h1, two h2 headings and a paragraph under each h2.',quiz:{q:'Which tag is used for a paragraph?',opts:['<p>','<img>','<table>'],answer:0,why:'The p element represents a paragraph.'}},
+{title:'Links and Images',am:'a element ሌላ ገጽ ወይም website ለመክፈት ይጠቅማል። img ምስል ያሳያል። alt ጽሑፍ ምስሉ ሳይታይ ወይም screen reader ሲጠቀም ጠቃሚ ነው።',en:'Use the anchor element to create links and img to embed images. Provide meaningful alt text for informative images; use an empty alt attribute for decorative images.',code:'<a href="https://example.com">Visit Example</a>\\n<img src="photo.jpg" alt="A student studying at a desk">',task:'Add a link to a website you use and an image with useful alt text.',quiz:{q:'What is the purpose of alt text?',opts:['To describe an image','To change font size','To create a database'],answer:0,why:'Alt text provides a text alternative for an image.'}},
+{title:'Forms and Inputs',am:'Form ከተጠቃሚ መረጃ ለመቀበል ይጠቅማል። label ከinput ጋር በfor እና id ማገናኘት ይመከራል።',en:'Forms collect user input. Labels should be programmatically associated with controls. Choose an input type that matches the data being collected.',code:'<form>\\n  <label for="email">Email</label>\\n  <input id="email" name="email" type="email" required>\\n  <button type="submit">Send</button>\\n</form>',task:'Build a registration form with name, email and password fields.',quiz:{q:'Which input type is appropriate for an email address?',opts:['text','email','color'],answer:1,why:'type="email" provides email-oriented input validation.'}}
+]},
+{id:'css',category:'frontend',icon:'🎨',level:'Beginner',title:'CSS Styling',desc:'Style web pages with colors, layouts and responsive design.',lessons:[
+{title:'CSS Introduction and Selectors',am:'CSS (Cascading Style Sheets) የHTML ክፍሎችን መልክ ይቆጣጠራል። selector የትኛው element ላይ style እንደሚተገበር ይመርጣል።',en:'CSS controls the presentation of HTML. A selector targets elements; declarations specify properties and values. CSS can be written in external files, style elements or inline styles.',code:'/* styles.css */\\nh1 {\\n  color: navy;\\n  font-size: 32px;\\n}\\n.card {\\n  background: white;\\n  padding: 16px;\\n}',task:'Create a styles.css file and style a heading and a card.',quiz:{q:'Which symbol selects a class in CSS?',opts:['#','.','*'],answer:1,why:'A dot (.) selects a class, such as .card.'}},
+{title:'Colors, Fonts and Box Model',am:'Box Model ከcontent፣ padding፣ border እና margin ይሠራል። padding በcontent እና border መካከል ነው፤ margin ከelement ውጭ ያለ ቦታ ነው።',en:'The CSS box model consists of content, padding, border and margin. Use box-sizing:border-box to make sizing easier to reason about.',code:'* { box-sizing: border-box; }\\n.card {\\n  padding: 20px;\\n  border: 1px solid #ccc;\\n  margin: 12px;\\n  border-radius: 8px;\\n}',task:'Create a card and experiment with padding, border and margin.',quiz:{q:'Which property adds space outside an element border?',opts:['padding','margin','font-size'],answer:1,why:'Margin creates space outside the border.'}},
+{title:'Flexbox Layout',am:'Flexbox በአንድ አቅጣጫ (row ወይም column) ውስጥ items ለማደራጀት ይጠቅማል። display:flex በparent ላይ ይጻፋል።',en:'Flexbox is a one-dimensional layout system. Apply display:flex to a container, then use justify-content and align-items to arrange its children.',code:'.navbar {\\n  display: flex;\\n  justify-content: space-between;\\n  align-items: center;\\n  gap: 16px;\\n}',task:'Build a navigation bar with a logo on the left and links on the right.',quiz:{q:'Which property aligns flex items along the main axis?',opts:['justify-content','border','font-family'],answer:0,why:'justify-content distributes items along the main axis.'}},
+{title:'CSS Grid and Responsive Design',am:'Grid ሁለት አቅጣጫዊ row እና column layout ለመገንባት ይጠቅማል። Media query ደግሞ በscreen መጠን መሠረት style ይቀይራል።',en:'CSS Grid handles two-dimensional layouts. Media queries apply styles based on viewport conditions, helping layouts adapt to phones, tablets and desktops.',code:='.cards {\\n  display: grid;\\n  grid-template-columns: repeat(3, 1fr);\\n  gap: 16px;\\n}\\n@media (max-width: 700px) {\\n  .cards { grid-template-columns: 1fr; }\\n}',task:'Make a three-column card layout that becomes one column on a narrow screen.',quiz:{q:'What does a media query help create?',opts:['Responsive layouts','HTML tags','SQL tables'],answer:0,why:'Media queries apply CSS depending on viewport or device conditions.'}}
+]},
+{id:'js',category:'frontend',icon:'💛',level:'Beginner',title:'JavaScript Programming',desc:'Add behavior with variables, functions, DOM and events.',lessons:[
+{title:'JavaScript Introduction',am:'JavaScript የWeb page ባህሪን የሚያክል programming language ነው። በbrowser ውስጥ HTML እና CSS ጋር በመስራት interactive pages ይፈጥራል።',en:'JavaScript is a programming language commonly used to add behavior to web pages. It can respond to user actions, update the DOM and communicate with servers.',code:'console.log("Hello, world!");\\nalert("Welcome to JavaScript");',task:'Open your browser developer console and print your name using console.log.',quiz:{q:'Which command writes a message to the console?',opts:['console.log()','<h1>','SELECT'],answer:0,why:'console.log() prints a value in the developer console.'}},
+{title:'Variables and Data Types',am:'Variable መረጃ ለማስቀመጥ ይጠቅማል። const እና let ተጠቀም፤ var በአዲስ code ውስጥ ብዙ ጊዜ አይመከርም። String፣ number፣ boolean እና object የተለመዱ data types ናቸው።',en:'Variables store values. Prefer const by default and let when reassignment is needed. Common types include string, number, boolean, null, undefined, object and symbol.',code:'const studentName = "Mekdes";\\nlet score = 85;\\nconst passed = true;\\nconsole.log(studentName, score, passed);',task:'Create variables for your name, age and whether you are a student.',quiz:{q:'Which keyword declares a variable that should not be reassigned?',opts:['const','let','if'],answer:0,why:'const prevents reassignment of the binding.'}},
+{title:'Conditions, Loops and Functions',am:'if/else ውሳኔ ለመስጠት፣ loops ደግሞ ተደጋጋሚ ሥራ ለማከናወን ይጠቅማሉ። function የሚደገም code በአንድ ቦታ ያደራጃል።',en:'Conditionals choose which code runs. Loops repeat work. Functions package reusable behavior and can accept parameters and return values.',code:'function add(a, b) {\\n  return a + b;\\n}\\n\\nif (add(2, 3) > 4) {\\n  console.log("Great");\\n}\\n\\nfor (let i = 1; i <= 3; i++) {\\n  console.log(i);\\n}',task:'Write a function that returns the larger of two numbers.',quiz:{q:'What does return do in a function?',opts:['Sends a result back','Creates a CSS class','Repeats a loop'],answer:0,why:'return provides the function result to its caller.'}},
+{title:'DOM and Events',am:'DOM (Document Object Model) HTML document ን JavaScript እንዲያነብና እንዲቀይር ያስችለዋል። Event እንደ click ወይም input ያለ ክስተት ነው።',en:'The DOM represents the document as objects. JavaScript can select elements, change content and respond to events such as clicks.',code:'const button = document.querySelector("#hello");\\nbutton.addEventListener("click", () => {\\n  document.querySelector("#message").textContent = "Hello!";\\n});',task:'Create a button that changes a paragraph when clicked.',quiz:{q:'Which method listens for a click event?',opts:['addEventListener()','querySQL()','styleHTML()'],answer:0,why:'addEventListener registers a handler for events.'}},
+{title:'Arrays, Objects and Fetch',am:'Array ብዙ values በቅደም ተከተል ያስቀምጣል። Object ደግሞ key/value pairs ይይዛል። fetch() ከserver API መረጃ ለማግኘት ይጠቅማል።',en:'Arrays store ordered collections; objects store keyed properties. fetch() makes network requests and returns a Promise. Handle errors and check response.ok.',code:'const student = { name: "Mekdes", age: 20 };\\nconst scores = [80, 90, 85];\\n\\nfetch("/api/students")\\n  .then(response => {\\n    if (!response.ok) throw new Error("Request failed");\\n    return response.json();\\n  })\\n  .then(data => console.log(data))\\n  .catch(error => console.error(error));',task:'Create an array of three courses and print each course using forEach.',quiz:{q:'What does fetch() commonly do?',opts:['Makes a network request','Styles a heading','Creates a database table'],answer:0,why:'fetch() is used to make HTTP requests.'}}
+]},
+{id:'react',category:'frontend',icon:'⚛️',level:'Intermediate',title:'React Development',desc:'Build component-based user interfaces with React.',lessons:[
+{title:'React and Components',am:'React በcomponent የተመሠረተ User Interface ለመገንባት የሚያግዝ JavaScript library ነው። Component በተደጋጋሚ ሊጠቀም የሚችል UI ክፍል ነው።',en:'React is a JavaScript library for building user interfaces. Components are reusable pieces of UI, commonly written as JavaScript functions that return JSX.',code:'function Welcome() {\\n  return <h1>Hello, learner!</h1>;\\n}\\n\\nexport default Welcome;',task:'Create a Profile component that displays a name and a short bio.',quiz:{q:'What is a React component?',opts:['A reusable UI piece','A SQL command','A CSS color'],answer:0,why:'Components are reusable building blocks of React interfaces.'}},
+{title:'Props and State',am:'Props ከparent component ወደ child component የሚላክ መረጃ ነው። State ደግሞ component የሚያስቀምጠው እና ሲቀየር UI እንዲዘምን የሚያደርግ መረጃ ነው።',en:'Props pass data into a component. State stores data that changes over time; updating state causes React to render the affected UI again.',code:'function Greeting({ name }) {\\n  return <h2>Hello, {name}</h2>;\\n}\\n\\nfunction Counter() {\\n  const [count, setCount] = React.useState(0);\\n  return <button onClick={() => setCount(count + 1)}>{count}</button>;\\n}',task:'Build a counter with a button that increases the number.',quiz:{q:'What should you use for data that changes inside a component?',opts:['State','A comment','A CSS selector'],answer:0,why:'State represents changing component data.'}},
+{title:'Hooks and API Integration',am:'Hooks የReact function component ውስጥ state እና lifecycle-related functionality ለመጠቀም ያስችላሉ። useEffect ለside effects ይጠቅማል።',en:'Hooks let function components use React features. useEffect synchronizes a component with external systems; fetch data carefully and handle loading and error states.',code:'React.useEffect(() => {\\n  let ignore = false;\\n  fetch("/api/courses")\\n    .then(r => r.json())\\n    .then(data => { if (!ignore) setCourses(data); });\\n  return () => { ignore = true; };\\n}, []);',task:'Build a page that displays a list of courses loaded from an API.',quiz:{q:'Which hook is commonly used for side effects?',opts:['useEffect','useColor','useHTML'],answer:0,why:'useEffect is used to synchronize with external systems.'}}
+]},
+{id:'java',category:'backend',icon:'☕',level:'Beginner',title:'Java Programming',desc:'Learn Java syntax, object-oriented programming and exceptions.',lessons:[
+{title:'Java Setup and First Program',am:'Java በብዙ ዓይነት application ለመገንባት የሚጠቅም programming language ነው። JDK የJava development tools ይዟል።',en:'Java is a general-purpose, class-based programming language. Install a JDK to compile and run Java programs.',code:'public class Main {\\n  public static void main(String[] args) {\\n    System.out.println("Hello, World!");\\n  }\\n}',task:'Install a JDK and run a program that prints your name.',quiz:{q:'Which method is the usual Java program entry point?',opts:['main','startHTML','runCSS'],answer:0,why:'The main method is the standard entry point for a Java application.'}},
+{title:'Variables and Conditions',am:'Java በstrongly typed ስርዓት ይሠራል። variable ሲፈጠር data type መግለጽ ያስፈልጋል። if/else ሁኔታ ለመፈተሽ ይጠቅማል።',en:'Java is statically typed: variables have declared types. Use if/else to choose behavior based on boolean conditions.',code:'int age = 19;\\nString name = "Mekdes";\\nboolean isAdult = age >= 18;\\n\\nif (isAdult) {\\n  System.out.println(name + " is an adult");\\n}',task:'Declare variables for a student name, age and grade, then print them.',quiz:{q:'Which type stores whole numbers in Java?',opts:['int','String','boolean'],answer:0,why:'int stores integer values.'}},
+{title:'Classes and Objects',am:'Class የobject ን blueprint ነው። Object ከclass የተፈጠረ instance ነው። fields መረጃን፣ methods ደግሞ ባህሪን ይወክላሉ።',en:'A class defines fields and methods. An object is an instance of a class created at runtime.',code:'class Student {\\n  String name;\\n  Student(String name) { this.name = name; }\\n  void introduce() {\\n    System.out.println("I am " + name);\\n  }\\n}\\n\\nStudent s = new Student("Mekdes");\\ns.introduce();',task:'Create a Book class with title and author fields and a method to display them.',quiz:{q:'An object is an instance of what?',opts:['A class','A loop','A package manager'],answer:0,why:'An object is created from a class definition.'}},
+{title:'Inheritance and Exceptions',am:'Inheritance አንድ class ከሌላ class ባህሪ እንዲወርስ ያደርጋል። Exception handling ደግሞ ስህተቶችን በtry/catch ለመቆጣጠር ይጠቅማል።',en:'Inheritance lets a class extend another class. Exception handling with try/catch helps a program respond to exceptional conditions.',code:'class Person {\\n  void speak() { System.out.println("Hello"); }\\n}\\nclass Student extends Person { }\\n\\ntry {\\n  int value = Integer.parseInt("123");\\n} catch (NumberFormatException error) {\\n  System.out.println("Invalid number");\\n}',task:'Create a Person class and a Student class that extends Person.',quiz:{q:'Which keywords handle exceptions?',opts:['try and catch','html and body','select and where'],answer:0,why:'Java uses try and catch blocks to handle exceptions.'}}
+]},
+{id:'spring',category:'backend',icon:'🍃',level:'Advanced',title:'Spring Boot & REST APIs',desc:'Create Java backend services and REST endpoints.',lessons:[
+{title:'Spring Boot Introduction',am:'Spring Boot በJava የbackend application በፍጥነት ለመጀመር ያግዛል። Auto-configuration እና embedded server ያቀርባል።',en:'Spring Boot simplifies creating stand-alone Spring applications through auto-configuration, starter dependencies and embedded servers.',code:'@SpringBootApplication\\npublic class Application {\\n  public static void main(String[] args) {\\n    SpringApplication.run(Application.class, args);\\n  }\\n}',task:'Create a Spring Boot project and run its default application.',quiz:{q:'Spring Boot is commonly used to build what?',opts:['Java applications and services','CSS animations','Image files'],answer:0,why:'Spring Boot simplifies building Java applications, including web services.'}},
+{title:'Controllers and REST Endpoints',am:'Controller HTTP requests ይቀበላል። REST API ብዙ ጊዜ GET ለማንበብ፣ POST ለመፍጠር፣ PUT/PATCH ለማዘመን እና DELETE ለመሰረዝ ይጠቀማል።',en:'A REST controller handles HTTP requests. Common methods include GET to read, POST to create, PUT/PATCH to update and DELETE to remove resources.',code:'@RestController\\n@RequestMapping("/api/hello")\\nclass HelloController {\\n  @GetMapping\\n  String hello() { return "Hello from backend"; }\\n}',task:'Create a GET endpoint at /api/hello that returns a greeting.',quiz:{q:'Which HTTP method is normally used to retrieve a resource?',opts:['GET','DELETE','PATCH'],answer:0,why:'GET requests retrieve a representation of a resource.'}},
+{title:'Services, Repositories and Validation',am:'Service የbusiness logic ይይዛል። Repository ከdatabase ጋር ይሠራል። Validation የሚገባው መረጃ ትክክል መሆኑን ይፈትሻል።',en:'Keep business logic in service classes, persistence operations in repositories, and validate incoming data at the application boundary.',code:'@Service\\nclass GreetingService {\\n  String message() { return "Welcome"; }\\n}\\n\\n@RestController\\nclass GreetingController {\\n  private final GreetingService service;\\n  GreetingController(GreetingService service) { this.service = service; }\\n  @GetMapping("/greeting") String greeting() { return service.message(); }\\n}',task:'Move a controller response into a separate service class.',quiz:{q:'Where should business logic commonly live?',opts:['Service layer','HTML title','Image alt text'],answer:0,why:'The service layer is a common place for business logic.'}}
+]},
+{id:'db',category:'backend',icon:'🗄️',level:'Intermediate',title:'Database & PostgreSQL',desc:'Design relational databases and query data using SQL.',lessons:[
+{title:'Database Fundamentals',am:'Database የተደራጀ መረጃ ማከማቻ ነው። Relational database መረጃን tables፣ rows እና columns ውስጥ ያደራጃል።',en:'A database stores organized information. In a relational database, data is represented in tables with rows and columns, and relationships connect tables.',code:'CREATE TABLE students (\\n  id INTEGER PRIMARY KEY,\\n  full_name VARCHAR(100) NOT NULL,\\n  email VARCHAR(150) UNIQUE\\n);',task:'Design a students table with an ID, name and email.',quiz:{q:'What does a row in a relational table represent?',opts:['One record','A database server','A CSS rule'],answer:0,why:'A row represents one record in a table.'}},
+{title:'SQL CRUD Operations',am:'SQL በdatabase ውስጥ መረጃ ለመፍጠር፣ ለማንበብ፣ ለማዘመን እና ለመሰረዝ ይጠቅማል።',en:'CRUD means Create, Read, Update and Delete. SQL statements INSERT, SELECT, UPDATE and DELETE perform these operations.',code:'INSERT INTO students (id, full_name) VALUES (1, \\'Mekdes\\');\\nSELECT * FROM students;\\nUPDATE students SET full_name = \\'Mekdes A.\\' WHERE id = 1;\\nDELETE FROM students WHERE id = 1;',task:'Create a table and practice inserting, selecting, updating and deleting a test row.',quiz:{q:'Which SQL statement reads data?',opts:['SELECT','UPDATE','DROP'],answer:0,why:'SELECT retrieves rows from tables.'}},
+{title:'Keys and Relationships',am:'Primary Key እያንዳንዱን row በልዩ መልኩ ይለያል። Foreign Key ከሌላ table primary key ጋር ግንኙነት ይፈጥራል።',en:'A primary key uniquely identifies a row. A foreign key references a key in another table and helps enforce referential integrity.',code:'CREATE TABLE enrollments (\\n  id INTEGER PRIMARY KEY,\\n  student_id INTEGER REFERENCES students(id),\\n  course_name VARCHAR(100) NOT NULL\\n);',task:'Create courses and enrollments tables with a foreign key relationship.',quiz:{q:'What does a foreign key do?',opts:['Links related tables','Changes text color','Starts a web browser'],answer:0,why:'A foreign key references a key in another table.'}},
+{title:'JOIN and PostgreSQL Basics',am:'JOIN ከተለያዩ tables የሚመጣ መረጃ በጋራ key ያገናኛል። PostgreSQL ኃይለኛ open-source relational database ነው።',en:'JOIN combines related rows from tables. PostgreSQL is an open-source relational database system with SQL support and advanced features.',code:'SELECT students.full_name, enrollments.course_name\\nFROM students\\nJOIN enrollments\\n  ON students.id = enrollments.student_id;',task:'Write a JOIN query that lists each student and the course they enrolled in.',quiz:{q:'What is the purpose of JOIN?',opts:['Combine related table rows','Delete all tables','Style HTML'],answer:0,why:'JOIN combines rows from related tables.'}}
+]},
+{id:'full',category:'fullstack',icon:'🚀',level:'Professional',title:'Full Stack Web Development',desc:'Connect frontend, backend and database into a complete app.',lessons:[
+{title:'How Full Stack Applications Work',am:'Full Stack Development የFrontend፣ Backend እና Database አብሮ መሥራት ነው። Browser ከFrontend ጋር ይሠራል፤ Frontend HTTP request ወደ Backend API ይልካል፤ Backend ከDatabase መረጃ ያነባል ወይም ያስቀምጣል።',en:'A full-stack application combines a user interface, server-side logic and data storage. The frontend sends HTTP requests to backend endpoints; the backend validates requests and reads or writes data in a database.',code:'Browser UI  →  HTTP request  →  Backend API\\n     ↑                         ↓\\n     └──── JSON response ← Database',task:'Draw the flow for a student registration form from browser to database and back.',quiz:{q:'Which part usually validates business rules and talks to the database?',opts:['Backend','CSS','Browser address bar'],answer:0,why:'The backend typically handles business logic and database access.'}},
+{title:'Connect Frontend to Backend API',am:'Frontend ከBackend ጋር fetch() ወይም HTTP client በመጠቀም ይገናኛል። API URL፣ HTTP method፣ headers እና request body ትክክል መሆን አለባቸው።',en:'The frontend communicates with backend APIs over HTTP. Send the correct method, headers and body, then handle loading, success and error states.',code:'async function loadStudents() {\\n  const response = await fetch("/api/students");\\n  if (!response.ok) throw new Error("Could not load students");\\n  const students = await response.json();\\n  console.log(students);\\n}',task:'Build a frontend page that requests a list of students from an API endpoint.',quiz:{q:'What format is commonly used to exchange API data?',opts:['JSON','JPEG','CSS'],answer:0,why:'JSON is a common data-interchange format for web APIs.'}},
+{title:'Authentication and Security Basics',am:'Authentication ተጠቃሚው ማን እንደሆነ ይፈትሻል፤ Authorization ደግሞ ምን ማድረግ እንደሚፈቀድለት ይወስናል። Password በplain text አይቀመጥም፤ secure password hashing ይጠቀሙ።',en:'Authentication verifies identity; authorization determines permissions. Store passwords using a modern password-hashing function, use HTTPS, validate inputs and protect secrets on the server.',code:'// Conceptual flow — never store plain-text passwords\\n1. User submits credentials over HTTPS\\n2. Server verifies password hash\\n3. Server creates a secure session\\n4. Server checks permissions on protected routes',task:'Write down which routes should be public and which should require a signed-in user.',quiz:{q:'What is authorization?',opts:['Checking what a user is allowed to do','Styling a login button','Creating an HTML heading'],answer:0,why:'Authorization checks permissions after identity is established.'}},
+{title:'Deployment and Final Project',am:'Deployment የapplication ወደ production server ማስተላለፍ ነው። Environment variables ለdatabase URL እና secrets ይጠቀሙ፤ secret በGitHub ውስጥ አታስገቡ።',en:'Deployment makes an application available to users. Configure production environment variables, HTTPS, database migrations, logging and backups. Never commit secrets to source control.',code:'# Example environment configuration (keep secrets out of Git)\\nDATABASE_URL=your-production-database-url\\nPORT=8080\\n\\n# Typical release checklist\\n- Build frontend\\n- Deploy backend\\n- Configure database\\n- Set environment variables\\n- Enable HTTPS\\n- Test production flows',task:'Plan and build a Student Management System with login, student CRUD, course enrollment and role-based access.',quiz:{q:'Where should production secrets be stored?',opts:['Secure environment variables or secret manager','Public GitHub source code','A visible HTML paragraph'],answer:0,why:'Secrets belong in protected environment configuration, not public source code.'}}
+]}
+];
 
-function toggleLanguage() {
-  english = !english;
-
-  document.querySelectorAll("[data-am][data-en]").forEach(el => {
-    el.textContent = english
-      ? el.getAttribute("data-en")
-      : el.getAttribute("data-am");
-  });
-
-  document.documentElement.lang = english ? "en" : "am";
-  document.getElementById("langBtn").textContent =
-    english ? "አማርኛ" : "English";
-
-  document.getElementById("courseSearch").placeholder =
-    english ? "Search courses..." : "ትምህርቶችን ፈልግ...";
+let english=false,currentFilter='all',activeCourse=null,activeLesson=0;
+function t(am,en){return english?en:am}
+function renderCourses(){
+ const query=document.getElementById('courseSearch').value.trim().toLowerCase();
+ const list=courses.filter(c=>(currentFilter==='all'||c.category===currentFilter)&&(`${c.title} ${c.desc} ${c.category}`.toLowerCase().includes(query)));
+ document.getElementById('courseGrid').innerHTML=list.map(c=>`<article class="course"><div class="course-top"><span class="course-icon">${c.icon}</span><small>${c.category.toUpperCase()} · ${c.lessons.length} LESSONS</small></div><div class="course-body"><h3>${c.title}</h3><p>${c.desc}</p><div class="course-meta"><span>${c.level}</span><span>${c.lessons.length} lessons</span></div><button class="details-btn" onclick="openCourse('${c.id}')">${t('ትምህርቱን ክፈት','Open Course')} →</button></div></article>`).join('');
+ document.getElementById('noResults').style.display=list.length?'none':'block';
 }
-
-/* COURSE CURRICULUM */
-function showDetails(button) {
-  const details = button.nextElementSibling;
-  details.classList.toggle("open");
-
-  const isOpen = details.classList.contains("open");
-
-  button.textContent = isOpen
-    ? (english ? "Hide Curriculum" : "ዝርዝሩን ዝጋ")
-    : (english ? "View Curriculum" : "የትምህርት ዝርዝር");
+function selectFilter(filter){currentFilter=filter;document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));renderCourses();document.getElementById('courses').scrollIntoView({behavior:'smooth'});}
+document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>selectFilter(b.dataset.filter)));
+document.getElementById('courseSearch').addEventListener('input',renderCourses);
+function openCourse(id){
+ activeCourse=courses.find(c=>c.id===id);activeLesson=0;
+ document.getElementById('roomTitle').textContent=activeCourse.title;
+ document.getElementById('roomSubtitle').textContent=`${activeCourse.level} · ${activeCourse.lessons.length} lessons`;
+ document.getElementById('lessonLinks').innerHTML=activeCourse.lessons.map((l,i)=>`<button class="lesson-link ${i===0?'active':''}" onclick="showLesson(${i})">${String(i+1).padStart(2,'0')}. ${l.title}</button>`).join('');
+ showLesson(0);document.getElementById('learningRoom').classList.add('visible');document.getElementById('learningRoom').scrollIntoView({behavior:'smooth'});
 }
-
-/* COURSE FILTER */
-let currentFilter = "all";
-
-function filterCourses() {
-  const query = document.getElementById("courseSearch")
-    .value.toLowerCase();
-
-  let visible = 0;
-
-  document.querySelectorAll(".course").forEach(course => {
-    const category = course.dataset.category;
-    const matchesCategory =
-      currentFilter === "all" || category === currentFilter;
-
-    const matchesSearch =
-      course.textContent.toLowerCase().includes(query);
-
-    const show = matchesCategory && matchesSearch;
-
-    course.style.display = show ? "" : "none";
-
-    if (show) visible++;
-  });
-
-  document.getElementById("noResults").style.display =
-    visible === 0 ? "block" : "none";
+function showLesson(index){
+ activeLesson=index;const l=activeCourse.lessons[index];
+ document.querySelectorAll('.lesson-link').forEach((b,i)=>b.classList.toggle('active',i===index));
+ const code=l.code.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+ const quiz=l.quiz;
+ document.getElementById('lessonContent').innerHTML=`
+ <div class="muted">LESSON ${index+1} OF ${activeCourse.lessons.length}</div>
+ <h3>${l.title}</h3>
+ <h4>በአማርኛ ማብራሪያ</h4><p>${l.am}</p>
+ <h4>English Explanation</h4><p>${l.en}</p>
+ <h4>Code Example</h4><pre class="code"><code>${code}</code></pre>
+ <h4>Practical Exercise</h4><p>${l.task}</p>
+ <div class="quiz"><h4>Quick Quiz</h4><p><strong>${quiz.q}</strong></p>${quiz.opts.map((o,i)=>`<label><input type="radio" name="lessonQuiz" value="${i}"> ${o.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</label>`).join('')}
+ <button class="action" onclick="checkQuiz()">Check Answer</button><p id="quizResult" class="quiz-result" aria-live="polite"></p></div>
+ <div class="lesson-actions"><button class="action secondary" onclick="showLesson(${Math.max(0,index-1)})" ${index===0?'disabled':''}>← Previous</button><button class="action" onclick="showLesson(${Math.min(activeCourse.lessons.length-1,index+1)})" ${index===activeCourse.lessons.length-1?'disabled':''}>Next Lesson →</button></div>`;
 }
-
-document.querySelectorAll(".filter").forEach(button => {
-  button.addEventListener("click", () => {
-    currentFilter = button.dataset.filter;
-
-    document.querySelectorAll(".filter").forEach(btn => {
-      btn.classList.remove("active");
-    });
-
-    button.classList.add("active");
-    filterCourses();
-  });
-});
-
-document.getElementById("courseSearch")
-  .addEventListener("input", filterCourses);
+function checkQuiz(){const chosen=document.querySelector('input[name="lessonQuiz"]:checked');const out=document.getElementById('quizResult');if(!chosen){out.textContent=t('እባክህ አንድ መልስ ምረጥ።','Please choose an answer.');return;}const q=activeCourse.lessons[activeLesson].quiz;out.textContent=Number(chosen.value)===q.answer?t('ትክክል ነው! ','Correct! ')+q.why:t('ትክክል አይደለም። ','Not quite. ')+q.why;}
+function closeRoom(){document.getElementById('learningRoom').classList.remove('visible');document.getElementById('courses').scrollIntoView({behavior:'smooth'});}
+function toggleLanguage(){english=!english;document.querySelectorAll('[data-am][data-en]').forEach(el=>el.textContent=english?el.dataset.en:el.dataset.am);document.documentElement.lang=english?'en':'am';document.getElementById('langBtn').textContent=english?'አማርኛ':'English';document.getElementById('courseSearch').placeholder=english?'Search courses...':'ትምህርቶችን ፈልግ...';renderCourses();if(activeCourse)openCourse(activeCourse.id);}
+renderCourses();
 </script>
-
-</body>
-</html>
+</body></html>
