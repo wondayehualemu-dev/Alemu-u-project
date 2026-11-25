@@ -6,24 +6,31 @@
 <meta name="description" content="Alemu U Project Learning Academy — learn Frontend, Backend and Full Stack development step by step.">
 <meta name="theme-color" content="#081426">
 <title>Alemu U Project | Learning Academy</title>
-<style>
-:root{--bg:#081426;--surface:#10233d;--surface2:#142b49;--gold:#e9bd65;--text:#f5f7fb;--muted:#b8c5d6;--border:#263a55;--blue:#2588ed;--green:#36c98f}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.7}a{text-decoration:none;color:inherit}button,input{font:inherit}button{cursor:pointer}.container{width:min(1150px,92%);margin:auto}
-header{position:sticky;top:0;z-index:20;background:#0d1d34f5;border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
-.navbar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.logo{font-size:23px;font-weight:bold;color:var(--gold)}nav{display:flex;gap:20px;flex-wrap:wrap}nav a{font-size:14px;color:var(--muted)}nav a:hover{color:var(--gold)}
-.lang,.btn,.filter,.details-btn,.action{border:0;border-radius:8px;padding:11px 16px;font-weight:bold}.lang{background:var(--gold);color:var(--bg)}
-.hero{padding:76px 0 58px;text-align:center;background:radial-gradient(ellipse at top,#19375b 0%,var(--bg) 68%)}.tag{display:inline-block;color:var(--gold);border:1px solid #e9bd6570;background:#e9bd6510;padding:6px 15px;border-radius:30px;font-size:13px;margin-bottom:20px}.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.2;margin-bottom:18px}.gold{color:var(--gold)}.hero p{color:var(--muted);max-width:760px;margin:0 auto 25px;font-size:17px}.hero-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.btn.primary,.action{background:var(--gold);color:var(--bg)}.btn.secondary{border:1px solid var(--gold);color:var(--gold)}.btn:hover,.action:hover,.details-btn:hover{transform:translateY(-2px)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:22px 0}.stat,.category,.course,.path-item,.feature,.lesson-panel{background:var(--surface);border:1px solid var(--border);border-radius:14px}.stat{text-align:center;padding:18px}.stat h3{font-size:27px;color:var(--gold)}.stat p,.muted{font-size:14px;color:var(--muted)}
-section{padding:58px 0}.section-title{font-size:clamp(25px,4vw,32px);color:var(--gold);margin-bottom:8px}.section-desc{color:var(--muted);margin-bottom:25px}
-.categories,.course-grid,.path,.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.category{padding:24px;transition:.2s}.category:hover,.course:hover{transform:translateY(-4px);border-color:var(--gold)}.category-icon{font-size:34px}.category h3{color:var(--gold);margin:8px 0}.category p{font-size:14px;color:var(--muted);min-height:50px}.category button{margin-top:15px;background:none;border:0;color:var(--gold);font-weight:bold}
-.search-area{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}.search-area input{flex:1;min-width:220px;padding:13px 15px;background:var(--surface);color:white;border:1px solid var(--border);border-radius:9px}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{background:var(--surface);color:var(--text);border:1px solid var(--border)}.filter.active,.filter:hover{background:var(--gold);color:var(--bg)}
-.course{overflow:hidden;transition:.2s}.course-top{padding:18px 21px;background:var(--surface2);display:flex;justify-content:space-between;align-items:center}.course-icon{font-size:30px}.course-top small{color:var(--gold);font-weight:bold}.course-body{padding:20px}.course h3{font-size:19px;margin-bottom:7px}.course p{font-size:14px;color:var(--muted);min-height:48px}.course-meta{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0}.course-meta span{background:#203b5d;padding:4px 8px;border-radius:5px;font-size:11px;color:var(--muted)}.details-btn{width:100%;background:var(--gold);color:var(--bg);transition:.2s}.no-results{display:none;text-align:center;padding:25px;color:var(--muted)}
-.path-item,.feature{padding:21px}.path-item h3,.feature h3{color:var(--gold);margin-bottom:7px}.path-item p,.feature p{font-size:14px;color:var(--muted)}
-#learningRoom{display:none;padding:35px 0 65px;background:#0b1a2d;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}#learningRoom.visible{display:block}.room-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}.room-head h2{color:var(--gold)}.room-layout{display:grid;grid-template-columns:290px 1fr;gap:18px}.lesson-list,.lesson-panel{padding:18px}.lesson-list h3{color:var(--gold);margin-bottom:12px}.lesson-link{display:block;width:100%;text-align:left;margin:7px 0;padding:10px 12px;background:#0b1a2d;color:var(--muted);border:1px solid var(--border);border-radius:8px}.lesson-link.active,.lesson-link:hover{border-color:var(--gold);color:var(--gold)}.lesson-panel h3{font-size:24px;color:var(--gold);margin-bottom:12px}.lesson-panel h4{color:var(--gold);margin:18px 0 6px}.lesson-panel p,.lesson-panel li{color:var(--muted);margin-bottom:8px}.lesson-panel ul{padding-left:22px}.code{white-space:pre-wrap;overflow-wrap:anywhere;background:#050d19;color:#dce9fa;border:1px solid var(--border);padding:15px;border-radius:9px;font-family:Consolas,monospace;font-size:13px;margin:12px 0}.lesson-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.action.secondary{background:transparent;border:1px solid var(--gold);color:var(--gold)}.quiz{margin-top:22px;padding:16px;background:#0b1a2d;border:1px solid var(--border);border-radius:10px}.quiz label{display:block;color:var(--muted);margin:8px 0}.quiz-result{margin-top:10px;color:var(--green);font-weight:bold}
-footer{background:#0d1d34;border-top:1px solid var(--border);padding:30px 0;text-align:center}footer p{color:var(--muted);font-size:14px}footer span{color:var(--gold)}
-@media(max-width:850px){.navbar{padding:12px 0;flex-wrap:wrap;justify-content:center}nav{justify-content:center;gap:12px}.categories,.course-grid,.path{grid-template-columns:repeat(2,1fr)}.room-layout{grid-template-columns:1fr}}
-@media(max-width:560px){.categories,.course-grid,.path,.features,.stats{grid-template-columns:1fr}.hero{padding:50px 0}.hero p{font-size:15px}.room-head{align-items:flex-start}}
-</style>
+.path-item {
+  width: 100%;
+  text-align: left;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.path-item strong {
+  display: inline-block;
+  color: var(--gold);
+  margin-top: 12px;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  tab-size: 2;
+}
 </head>
 <body>
 <header><div class="container navbar">
@@ -58,75 +65,42 @@ footer{background:#0d1d34;border-top:1px solid var(--border);padding:30px 0;text
 <section id="learningRoom"><div class="container"><div class="room-head"><div><div class="tag">YOUR CLASSROOM</div><h2 id="roomTitle">Course title</h2><p class="muted" id="roomSubtitle">Select a lesson to begin.</p></div><button class="action secondary" onclick="closeRoom()" data-am="ወደ ኮርሶች ተመለስ" data-en="Back to courses">ወደ ኮርሶች ተመለስ</button></div>
 <div class="room-layout"><aside class="lesson-list"><h3 data-am="የትምህርት ዝርዝር" data-en="Course Lessons">የትምህርት ዝርዝር</h3><div id="lessonLinks"></div></aside><article class="lesson-panel" id="lessonContent" aria-live="polite"></article></div>
 </div></section>
-<section id="path"><div class="container"><h2 class="section-title" data-am="የመማሪያ መንገድ" data-en="Your Learning Journey">የመማሪያ መንገድ</h2><p class="section-desc" data-am="እውቀትህን በደረጃ ገንባ።" data-en="Build your knowledge step by step.">እውቀትህን በደረጃ ገንባ።</p><div class="path">
-<div class="path-item"><h3>
-<div class="path">
+<section id="path">
+  <div class="container">
+    <h2 class="section-title"
+        data-am="የመማሪያ መንገድ"
+        data-en="Your Learning Journey">የመማሪያ መንገድ</h2>
 
-  <button class="path-item" onclick="selectLevel('Beginner')">
-    <h3>
-<div class="path">
+    <p class="section-desc"
+       data-am="እውቀትህን በደረጃ ገንባ።"
+       data-en="Build your knowledge step by step.">
+       እውቀትህን በደረጃ ገንባ።
+    </p>
 
-  <button class="path-item" onclick="selectLevel('Beginner')">
-    <h3>
-<div class="path">
+    <div class="path">
+      <button class="path-item" type="button"
+              onclick="selectLevel('Beginner')">
+        <h3>01. Beginner</h3>
+        <p>HTML, CSS, JavaScript and Java basics.</p>
+        <strong>Start Beginner Lessons →</strong>
+      </button>
 
-  <button class="path-item" onclick="selectLevel('Beginner')">
-    <h3>01. Beginner</h3>
-    <p>HTML, CSS, JavaScript and Java basics.</p>
-    <strong>Start Beginner Lessons →</strong>
-  </button>
+      <button class="path-item" type="button"
+              onclick="selectLevel('Intermediate')">
+        <h3>02. Intermediate</h3>
+        <p>React, Database and PostgreSQL.</p>
+        <strong>Start Intermediate Lessons →</strong>
+      </button>
 
-  <button class="path-item" onclick="selectLevel('Intermediate')">
-    <h3>02. Intermediate</h3>
-    <p>React, Database and PostgreSQL.</p>
-    <strong>Start Intermediate Lessons →</strong>
-  </button>
-
-  <button class="path-item" onclick="selectLevel('Advanced')">
-    <h3>03. Advanced</h3>
-    <p>Spring Boot, REST API and Full Stack.</p>
-    <strong>Start Advanced Lessons →</strong>
-  </button>
-
-</div>
-</h3>
-    <p>HTML, CSS, JavaScript and Java basics.</p>
-    <strong>Start Beginner Lessons →</strong>
-  </button>
-
-  <button class="path-item" onclick="selectLevel('Intermediate')">
-    <h3>02. Intermediate</h3>
-    <p>React, Database and PostgreSQL.</p>
-    <strong>Start Intermediate Lessons →</strong>
-  </button>
-
-  <button class="path-item" onclick="selectLevel('Advanced')">
-    <h3>03. Advanced</h3>
-    <p>Spring Boot, REST API and Full Stack.</p>
-    <strong>Start Advanced Lessons →</strong>
-  </button>
-
-</div>
-</h3>
-    <p>HTML, CSS, JavaScript and Java basics.</p>
-    <strong>Start Beginner Lessons →</strong>
-  </button>
-
-  <button class="path-item" onclick="selectLevel('Intermediate')">
-    <h3>02. Intermediate</h3>
-    <p>React, Database and PostgreSQL.</p>
-    <strong>Start Intermediate Lessons →</strong>
-  </button>
-
-  <button class="path-item" onclick="selectLevel('Advanced')">
-    <h3>03. Advanced</h3>
-    <p>Spring Boot, REST API and Full Stack.</p>
-    <strong>Start Advanced Lessons →</strong>
-  </button>
-
-</div>
-</h3><p>HTML, CSS, programming basics, variables and simple projects.</p></div><div class="path-item"><h3>02. Intermediate</h3><p>JavaScript, React, Java, databases, APIs and application structure.</p></div><div class="path-item"><h3>03. Advanced</h3><p>Backend architecture, security, testing, deployment and complete projects.</p></div>
-</div></div></section>
+      <button class="path-item" type="button"
+              onclick="selectLevel('Advanced')">
+        <h3>03. Advanced</h3>
+        <p>Spring Boot, REST API and Full Stack.</p>
+        <strong>Start Advanced Lessons →</strong>
+      </button>
+    </div>
+  </div>
+</section>
 <section><div class="container"><h2 class="section-title" data-am="የትምህርት አቀራረባችን" data-en="Our Learning Approach">የትምህርት አቀራረባችን</h2><div class="features">
 <div class="feature"><h3>📖 Step-by-Step Lessons</h3><p>Learn in a structured sequence from simple to complex topics.</p></div><div class="feature"><h3>💻 Practical Coding</h3><p>Practice with code examples and practical exercises.</p></div><div class="feature"><h3>📝 Quizzes & Exams</h3><p>Check your understanding with short quizzes.</p></div><div class="feature"><h3>🏆 Real Projects</h3><p>Apply your skills by building real-world applications.</p></div>
 </div></div></section>
@@ -134,13 +108,123 @@ footer{background:#0d1d34;border-top:1px solid var(--border);padding:30px 0;text
 </main><footer><div class="container"><p>© 2026 <span>ALEMU U PROJECT</span>. All Rights Reserved.</p><a class="gold" href="index.html">← Back to Personal Website</a></div></footer>
 <script>
 const courses = [
-{id:'html',category:'frontend',icon:'🌐',level:'Beginner',title:'HTML Fundamentals',desc:'Build the structure of web pages with HTML5.',lessons:[
-{title:'Introduction to HTML',am:'HTML (HyperText Markup Language) የWeb page መዋቅርን የሚገነባ ቋንቋ ነው። ለምሳሌ heading፣ paragraph፣ image እና link ለማሳየት እንጠቀማለን። HTML programming language ሳይሆን markup language ነው።',en:'HTML (HyperText Markup Language) describes the structure and meaning of web content. It defines headings, paragraphs, links, images, forms and other elements. HTML is a markup language, not a programming language.',code:'<!DOCTYPE html>\\n<html lang="en">\\n<head>\\n  <meta charset="UTF-8">\\n  <title>My First Page</title>\\n</head>\\n<body>\\n  <h1>Hello, World!</h1>\\n  <p>My first web page.</p>\\n</body>\\n</html>',task:'Create an HTML file that displays your name as a heading and a short paragraph about yourself.',quiz:{q:'What does HTML mainly define?',opts:['The structure of web content','The color of the computer','The database password'],answer:0,why:'HTML describes the structure and meaning of web content.'}},
-{title:'HTML Document Structure',am:'HTML document በDOCTYPE፣ html፣ head እና body ይጀምራል። head የገጹን metadata ይይዛል፤ body ደግሞ ተጠቃሚው የሚያየውን ይይዛል።',en:'A standard HTML document contains a doctype declaration, an html root element, a head for metadata and a body for visible page content.',code:'<!DOCTYPE html>\\n<html lang="en">\\n<head>\\n  <meta charset="UTF-8">\\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\\n  <title>Page title</title>\\n</head>\\n<body>\\n  <h1>Welcome</h1>\\n</body>\\n</html>',task:'Add a title and viewport meta tag to your first HTML page.',quiz:{q:'Which element contains visible page content?',opts:['head','body','title'],answer:1,why:'The body contains the content rendered in the page.'}},
-{title:'Elements, Headings and Paragraphs',am:'Element ብዙ ጊዜ opening tag፣ content እና closing tag ይኖረዋል። h1 እስከ h6 ርዕሶችን፣ p ደግሞ paragraph ይወክላል።',en:'Elements are building blocks of HTML. Use headings h1–h6 to represent a document outline and p for paragraphs. Choose headings by meaning and hierarchy, not just visual size.',code:'<h1>My Website</h1>\\n<h2>About Me</h2>\\n<p>I am learning web development.</p>\\n<strong>Important text</strong>',task:'Create one h1, two h2 headings and a paragraph under each h2.',quiz:{q:'Which tag is used for a paragraph?',opts:['<p>','<img>','<table>'],answer:0,why:'The p element represents a paragraph.'}},
-{title:'Links and Images',am:'a element ሌላ ገጽ ወይም website ለመክፈት ይጠቅማል። img ምስል ያሳያል። alt ጽሑፍ ምስሉ ሳይታይ ወይም screen reader ሲጠቀም ጠቃሚ ነው።',en:'Use the anchor element to create links and img to embed images. Provide meaningful alt text for informative images; use an empty alt attribute for decorative images.',code:'<a href="https://example.com">Visit Example</a>\\n<img src="photo.jpg" alt="A student studying at a desk">',task:'Add a link to a website you use and an image with useful alt text.',quiz:{q:'What is the purpose of alt text?',opts:['To describe an image','To change font size','To create a database'],answer:0,why:'Alt text provides a text alternative for an image.'}},
-{title:'Forms and Inputs',am:'Form ከተጠቃሚ መረጃ ለመቀበል ይጠቅማል። label ከinput ጋር በfor እና id ማገናኘት ይመከራል።',en:'Forms collect user input. Labels should be programmatically associated with controls. Choose an input type that matches the data being collected.',code:'<form>\\n  <label for="email">Email</label>\\n  <input id="email" name="email" type="email" required>\\n  <button type="submit">Send</button>\\n</form>',task:'Build a registration form with name, email and password fields.',quiz:{q:'Which input type is appropriate for an email address?',opts:['text','email','color'],answer:1,why:'type="email" provides email-oriented input validation.'}}
-]},
+
+{
+  id: 'html',
+  category: 'frontend',
+  icon: '🌐',
+  level: 'Beginner',
+  title: 'HTML Fundamentals',
+  desc: 'Build the structure of web pages with HTML5.',
+  lessons: [
+    {
+      title: 'Introduction to HTML',
+      am: 'HTML (HyperText Markup Language) የWeb page መዋቅርን የሚገነባ ቋንቋ ነው። ለምሳሌ heading፣ paragraph፣ image እና link ለማሳየት እንጠቀማለን። HTML programming language ሳይሆን markup language ነው።',
+      en: 'HTML (HyperText Markup Language) describes the structure and meaning of web content. It defines headings, paragraphs, links, images, forms and other elements. HTML is a markup language, not a programming language.',
+      code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My First Page</title>
+</head>
+<body>
+  <h1>Hello, World!</h1>
+  <p>My first web page.</p>
+</body>
+</html>`,
+      task: 'Create an HTML file that displays your name as a heading and a short paragraph about yourself.',
+      quiz: {
+        q: 'What does HTML mainly define?',
+        opts: [
+          'The structure of web content',
+          'The color of the computer',
+          'The database password'
+        ],
+        answer: 0,
+        why: 'HTML describes the structure and meaning of web content.'
+      }
+    },
+
+    {
+      title: 'HTML Document Structure',
+      am: 'HTML document በDOCTYPE፣ html፣ head እና body ይጀምራል። head የገጹን metadata ይይዛል፤ body ደግሞ ተጠቃሚው የሚያየውን ይይዛል።',
+      en: 'A standard HTML document contains a doctype declaration, an html root element, a head for metadata and a body for visible page content.',
+      code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page title</title>
+</head>
+<body>
+  <h1>Welcome</h1>
+</body>
+</html>`,
+      task: 'Add a title and viewport meta tag to your first HTML page.',
+      quiz: {
+        q: 'Which element contains visible page content?',
+        opts: ['head', 'body', 'title'],
+        answer: 1,
+        why: 'The body contains the content rendered in the page.'
+      }
+    },
+
+    {
+      title: 'Elements, Headings and Paragraphs',
+      am: 'Element ብዙ ጊዜ opening tag፣ content እና closing tag ይኖረዋል። h1 እስከ h6 ርዕሶችን፣ p ደግሞ paragraph ይወክላል።',
+      en: 'Elements are building blocks of HTML. Use headings h1–h6 to represent a document outline and p for paragraphs. Choose headings by meaning and hierarchy, not just visual size.',
+      code: `<h1>My Website</h1>
+<h2>About Me</h2>
+<p>I am learning web development.</p>
+<strong>Important text</strong>`,
+      task: 'Create one h1, two h2 headings and a paragraph under each h2.',
+      quiz: {
+        q: 'Which tag is used for a paragraph?',
+        opts: ['<p>', '<img>', '<table>'],
+        answer: 0,
+        why: 'The p element represents a paragraph.'
+      }
+    },
+
+    {
+      title: 'Links and Images',
+      am: 'a element ሌላ ገጽ ወይም website ለመክፈት ይጠቅማል። img ምስል ያሳያል። alt ጽሑፍ ምስሉ ሳይታይ ወይም screen reader ሲጠቀም ጠቃሚ ነው።',
+      en: 'Use the anchor element to create links and img to embed images. Provide meaningful alt text for informative images; use an empty alt attribute for decorative images.',
+      code: `<a href="https://example.com">Visit Example</a>
+<img src="photo.jpg" alt="A student studying at a desk">`,
+      task: 'Add a link to a website you use and an image with useful alt text.',
+      quiz: {
+        q: 'What is the purpose of alt text?',
+        opts: [
+          'To describe an image',
+          'To change font size',
+          'To create a database'
+        ],
+        answer: 0,
+        why: 'Alt text provides a text alternative for an image.'
+      }
+    },
+
+    {
+      title: 'Forms and Inputs',
+      am: 'Form ከተጠቃሚ መረጃ ለመቀበል ይጠቅማል። label ከinput ጋር በfor እና id ማገናኘት ይመከራል።',
+      en: 'Forms collect user input. Labels should be programmatically associated with controls. Choose an input type that matches the data being collected.',
+      code: `<form>
+  <label for="email">Email</label>
+  <input id="email" name="email" type="email" required>
+  <button type="submit">Send</button>
+</form>`,
+      task: 'Build a registration form with name, email and password fields.',
+      quiz: {
+        q: 'Which input type is appropriate for an email address?',
+        opts: ['text', 'email', 'color'],
+        answer: 1,
+        why: 'type="email" provides email-oriented input validation.'
+      }
+    }
+  ]
+},
+
 {id:'css',category:'frontend',icon:'🎨',level:'Beginner',title:'CSS Styling',desc:'Style web pages with colors, layouts and responsive design.',lessons:[
 {title:'CSS Introduction and Selectors',am:'CSS (Cascading Style Sheets) የHTML ክፍሎችን መልክ ይቆጣጠራል። selector የትኛው element ላይ style እንደሚተገበር ይመርጣል።',en:'CSS controls the presentation of HTML. A selector targets elements; declarations specify properties and values. CSS can be written in external files, style elements or inline styles.',code:'/* styles.css */\\nh1 {\\n  color: navy;\\n  font-size: 32px;\\n}\\n.card {\\n  background: white;\\n  padding: 16px;\\n}',task:'Create a styles.css file and style a heading and a card.',quiz:{q:'Which symbol selects a class in CSS?',opts:['#','.','*'],answer:1,why:'A dot (.) selects a class, such as .card.'}},
 {title:'Colors, Fonts and Box Model',am:'Box Model ከcontent፣ padding፣ border እና margin ይሠራል። padding በcontent እና border መካከል ነው፤ margin ከelement ውጭ ያለ ቦታ ነው።',en:'The CSS box model consists of content, padding, border and margin. Use box-sizing:border-box to make sizing easier to reason about.',code:'* { box-sizing: border-box; }\\n.card {\\n  padding: 20px;\\n  border: 1px solid #ccc;\\n  margin: 12px;\\n  border-radius: 8px;\\n}',task:'Create a card and experiment with padding, border and margin.',quiz:{q:'Which property adds space outside an element border?',opts:['padding','margin','font-size'],answer:1,why:'Margin creates space outside the border.'}},
@@ -203,6 +287,41 @@ function selectLevel(level) {
     return course.level === level;
   });
 
+  const grid = document.getElementById("courseGrid");
+  const noResults = document.getElementById("noResults");
+
+  grid.innerHTML = selectedCourses.map(course => `
+    <article class="course">
+      <div class="course-top">
+        <span class="course-icon">${course.icon}</span>
+        <small>${course.level}</small>
+      </div>
+
+      <div class="course-body">
+        <h3>${course.title}</h3>
+        <p>${course.desc}</p>
+
+        <div class="course-meta">
+          <span>${course.lessons.length} Lessons</span>
+        </div>
+
+        <button class="details-btn"
+                type="button"
+                onclick="openCourse('${course.id}')">
+          ${t('ትምህርቱን ክፈት', 'Open Course')} →
+        </button>
+      </div>
+    </article>
+  `).join("");
+
+  noResults.style.display =
+    selectedCourses.length ? "none" : "block";
+
+  document.getElementById("courses").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
   document.getElementById("courseGrid").innerHTML =
     selectedCourses.map(course => `
       <article class="course">
@@ -242,25 +361,114 @@ function openCourse(id){
  document.getElementById('lessonLinks').innerHTML=activeCourse.lessons.map((l,i)=>`<button class="lesson-link ${i===0?'active':''}" onclick="showLesson(${i})">${String(i+1).padStart(2,'0')}. ${l.title}</button>`).join('');
  showLesson(0);document.getElementById('learningRoom').classList.add('visible');document.getElementById('learningRoom').scrollIntoView({behavior:'smooth'});
 }
-function showLesson(index){
- activeLesson=index;const l=activeCourse.lessons[index];
- document.querySelectorAll('.lesson-link').forEach((b,i)=>b.classList.toggle('active',i===index));
- const code=l.code.replace(/</g,'&lt;').replace(/>/g,'&gt;');
- const quiz=l.quiz;
- document.getElementById('lessonContent').innerHTML=`
- <div class="muted">LESSON ${index+1} OF ${activeCourse.lessons.length}</div>
- <h3>${l.title}</h3>
- <h4>በአማርኛ ማብራሪያ</h4><p>${l.am}</p>
- <h4>English Explanation</h4><p>${l.en}</p>
- <h4>Code Example</h4><pre class="code"><code>${code}</code></pre>
- <h4>Practical Exercise</h4><p>${l.task}</p>
- <div class="quiz"><h4>Quick Quiz</h4><p><strong>${quiz.q}</strong></p>${quiz.opts.map((o,i)=>`<label><input type="radio" name="lessonQuiz" value="${i}"> ${o.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</label>`).join('')}
- <button class="action" onclick="checkQuiz()">Check Answer</button><p id="quizResult" class="quiz-result" aria-live="polite"></p></div>
- <div class="lesson-actions"><button class="action secondary" onclick="showLesson(${Math.max(0,index-1)})" ${index===0?'disabled':''}>← Previous</button><button class="action" onclick="showLesson(${Math.min(activeCourse.lessons.length-1,index+1)})" ${index===activeCourse.lessons.length-1?'disabled':''}>Next Lesson →</button></div>`;
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  })[char]);
+}
+
+function showLesson(index) {
+  if (!activeCourse) return;
+
+  activeLesson = index;
+
+  const lesson = activeCourse.lessons[index];
+  if (!lesson) return;
+
+  document.querySelectorAll(".lesson-link").forEach((button, i) => {
+    button.classList.toggle("active", i === index);
+  });
+
+  const quiz = lesson.quiz;
+
+  document.getElementById("lessonContent").innerHTML = `
+    <div class="muted">
+      LESSON ${index + 1} OF ${activeCourse.lessons.length}
+    </div>
+
+    <h3>${escapeHTML(lesson.title)}</h3>
+
+    <h4>${t("በአማርኛ ማብራሪያ", "Amharic Explanation")}</h4>
+    <p>${escapeHTML(lesson.am)}</p>
+
+    <h4>${t("የእንግሊዝኛ ማብራሪያ", "English Explanation")}</h4>
+    <p>${escapeHTML(lesson.en)}</p>
+
+    <h4>${t("የCode ምሳሌ", "Code Example")}</h4>
+    <pre class="code"><code>${escapeHTML(lesson.code)}</code></pre>
+
+    <h4>${t("ተግባራዊ ልምምድ", "Practical Exercise")}</h4>
+    <p>${escapeHTML(lesson.task)}</p>
+
+    <div class="quiz">
+      <h4>${t("አጭር ፈተና", "Quick Quiz")}</h4>
+
+      <p><strong>${escapeHTML(quiz.q)}</strong></p>
+
+      ${quiz.opts.map((option, i) => `
+        <label>
+          <input type="radio" name="lessonQuiz" value="${i}">
+          ${escapeHTML(option)}
+        </label>
+      `).join("")}
+
+      <button class="action" type="button" onclick="checkQuiz()">
+        ${t("መልስ አረጋግጥ", "Check Answer")}
+      </button>
+
+      <p id="quizResult" class="quiz-result" aria-live="polite"></p>
+    </div>
+
+    <div class="lesson-actions">
+      <button class="action secondary"
+              type="button"
+              onclick="showLesson(${Math.max(0, index - 1)})"
+              ${index === 0 ? "disabled" : ""}>
+        ← ${t("ቀዳሚ", "Previous")}
+      </button>
+
+      <button class="action"
+              type="button"
+              onclick="showLesson(${Math.min(activeCourse.lessons.length - 1, index + 1)})"
+              ${index === activeCourse.lessons.length - 1 ? "disabled" : ""}>
+        ${t("ቀጣይ ትምህርት", "Next Lesson")} →
+      </button>
+    </div>
+  `;
 }
 function checkQuiz(){const chosen=document.querySelector('input[name="lessonQuiz"]:checked');const out=document.getElementById('quizResult');if(!chosen){out.textContent=t('እባክህ አንድ መልስ ምረጥ።','Please choose an answer.');return;}const q=activeCourse.lessons[activeLesson].quiz;out.textContent=Number(chosen.value)===q.answer?t('ትክክል ነው! ','Correct! ')+q.why:t('ትክክል አይደለም። ','Not quite. ')+q.why;}
 function closeRoom(){document.getElementById('learningRoom').classList.remove('visible');document.getElementById('courses').scrollIntoView({behavior:'smooth'});}
-function toggleLanguage(){english=!english;document.querySelectorAll('[data-am][data-en]').forEach(el=>el.textContent=english?el.dataset.en:el.dataset.am);document.documentElement.lang=english?'en':'am';document.getElementById('langBtn').textContent=english?'አማርኛ':'English';document.getElementById('courseSearch').placeholder=english?'Search courses...':'ትምህርቶችን ፈልግ...';renderCourses();if(activeCourse)openCourse(activeCourse.id);}
+function toggleLanguage() {
+  const savedLesson = activeLesson;
+  const savedCourseId = activeCourse ? activeCourse.id : null;
+
+  english = !english;
+
+  document.querySelectorAll("[data-am][data-en]").forEach(element => {
+    element.textContent = english
+      ? element.dataset.en
+      : element.dataset.am;
+  });
+
+  document.documentElement.lang = english ? "en" : "am";
+
+  document.getElementById("langBtn").textContent =
+    english ? "አማርኛ" : "English";
+
+  document.getElementById("courseSearch").placeholder =
+    english ? "Search courses..." : "ትምህርቶችን ፈልግ...";
+
+  renderCourses();
+
+  if (savedCourseId) {
+    openCourse(savedCourseId);
+    showLesson(savedLesson);
+  }
+}
 renderCourses();
 </script>
 </body></html>
