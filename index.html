@@ -4,213 +4,415 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Alemu Wondayehu - Personal Portfolio">
+  <meta name="description" content="Alemu Wondayehu Gashi - Personal Portfolio">
+  <meta name="theme-color" content="#081426">
   <title>Alemu Wondayehu | Personal Website</title>
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    :root {
+      --bg: #081426;
+      --surface: #10233d;
+      --header: #0d1d34;
+      --border: #263a55;
+      --gold: #e9bd65;
+      --text: #f5f7fb;
+      --muted: #c2ccda;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      background: #081426;
-      color: #f5f7fb;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.7;
     }
+
+    a { color: var(--gold); }
+
     header {
-      padding: 20px 8%;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding: 16px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 18px;
       flex-wrap: wrap;
-      gap: 15px;
-      background: #0d1d34;
-      border-bottom: 1px solid #263a55;
+      background: var(--header);
+      border-bottom: 1px solid var(--border);
     }
-    .logo { color: #e9bd65; font-size: 23px; font-weight: bold; }
-    nav { display: flex; gap: 18px; flex-wrap: wrap; }
-    nav a { color: white; text-decoration: none; }
-    nav a:hover { color: #e9bd65; }
-    button {
-      background: #e9bd65; color: #081426;
-      border: 0; padding: 10px 17px;
-      border-radius: 8px; cursor: pointer; font-weight: bold;
+
+    .logo {
+      color: var(--gold);
+      font-size: 23px;
+      font-weight: bold;
+      text-decoration: none;
     }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover { color: var(--gold); }
+
+    button, .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--bg);
+      border: 0;
+      padding: 11px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    button:hover, .btn:hover {
+      filter: brightness(1.1);
+    }
+
     .hero {
-      min-height: 78vh;
-      display: flex; align-items: center;
-      justify-content: center; gap: 55px;
-      padding: 65px 8%; flex-wrap: wrap;
+      min-height: 76vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 55px;
+      padding: 70px 8%;
+      flex-wrap: wrap;
     }
-    .hero-text { max-width: 550px; }
-    .hero h1 { font-size: clamp(36px, 6vw, 58px); line-height: 1.2; }
-    .hero h1 span { color: #e9bd65; }
-    .hero p { color: #c2ccda; margin: 20px 0; font-size: 18px; }
+
+    .hero-text { max-width: 590px; }
+
+    .hero h1 {
+      font-size: clamp(35px, 5.5vw, 58px);
+      line-height: 1.2;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero p {
+      color: var(--muted);
+      margin: 20px 0;
+      font-size: 18px;
+    }
+
     .photo {
-      width: 270px; height: 270px;
-      border-radius: 50%; object-fit: cover;
-      border: 5px solid #e9bd65;
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 5px solid var(--gold);
       box-shadow: 0 0 35px #e9bd6540;
     }
-    section { padding: 65px 8%; }
-    section h2 { color: #e9bd65; font-size: 30px; margin-bottom: 20px; }
-    .panel {
-      background: #10233d; padding: 28px;
-      border-radius: 14px; border: 1px solid #263a55;
+
+    .hero-actions, .social-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 22px;
     }
+
+    .social-links a {
+      display: inline-block;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      background: #1877f2;
+    }
+
+    .social-links a:last-child {
+      background: #229ed9;
+    }
+
+    section { padding: 65px 8%; }
+
+    section h2 {
+      color: var(--gold);
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .panel, .project {
+      background: var(--surface);
+      padding: 28px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
     .projects {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
-    .project {
-      background: #10233d; padding: 25px;
-      border-radius: 12px; border: 1px solid #263a55;
+
+    .project h3 {
+      color: var(--gold);
+      margin-bottom: 10px;
     }
-    .project h3 { color: #e9bd65; margin-bottom: 10px; }
-    a { color: #e9bd65; }
+
+    .panel p, .project p { color: var(--muted); }
+
     footer {
-      text-align: center; padding: 25px;
-      background: #0d1d34; color: #c2ccda;
+      text-align: center;
+      padding: 25px;
+      background: var(--header);
+      color: var(--muted);
+      border-top: 1px solid var(--border);
     }
-    @media(max-width: 600px) {
+
+    :focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 700px) {
       header { justify-content: center; }
-      .hero { text-align: center; }
-      .photo { width: 220px; height: 220px; }
+      nav { justify-content: center; gap: 12px; }
+      .hero {
+        text-align: center;
+        gap: 28px;
+      }
+      .hero-text { order: 2; }
+      .photo {
+        width: 220px;
+        height: 220px;
+      }
+      .hero-actions { justify-content: center; }
+      section { padding: 48px 6%; }
+    }
+
+    @media (max-width: 420px) {
+      header { padding: 14px 5%; }
+      nav { gap: 10px; font-size: 14px; }
+      .logo {
+        width: 100%;
+        text-align: center;
+      }
+      .hero { padding: 48px 6%; }
     }
   </style>
 </head>
+
 <body>
 
-<div class="profile">
-  <img
-    src="https://raw.githubusercontent.com/wondayehualemu-dev/Alemu-u-project/main/alex.jpg"
-    alt="Alemu Wondayehu"
-    class="profile-photo"
-  >
-  <h1>Alemu Wondayehu</h1>
-  <p>Welcome to my personal website!</p>
-
-  <div class="social-links">
-    <a href="https://facebook.com/Alemuwon" target="_blank">Facebook</a>
-    <a href="https://t.me/Alemuwon" target="_blank">Telegram</a>
-  </div>
-</div>
-
-<style>
-.profile {
-  text-align: center;
-  padding: 35px 15px;
-}
-.profile-photo {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 50%;
-  border: 4px solid #38bdf8;
-  display: block;
-  margin: 0 auto 20px;
-}
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
-.social-links a {
-  background: #1877f2;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 25px;
-  text-decoration: none;
-}
-.social-links a:last-child {
-  background: #229ed9;
-}
-</style>
-
 <header>
-  <div class="logo">ALEM U</div>
- <a href="academy.html">Learning Academy</a>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+  <a class="logo" href="#home">ALEM U</a>
+
+  <nav aria-label="Main navigation">
+    <a href="academy.html">Learning Academy</a>
+    <a href="#home" data-am="መነሻ" data-en="Home">መነሻ</a>
+    <a href="#about" data-am="ስለ እኔ" data-en="About">ስለ እኔ</a>
+    <a href="#projects" data-am="ፕሮጀክቶች" data-en="Projects">ፕሮጀክቶች</a>
+    <a href="#contact" data-am="አግኙኝ" data-en="Contact">አግኙኝ</a>
   </nav>
-  <button onclick="toggleLanguage()">አማ / EN</button>
+
+  <button type="button" id="languageButton" onclick="toggleLanguage()">
+    አማ / EN
+  </button>
 </header>
 
 <main>
+
   <section class="hero" id="home">
-  <img
-    src="https://raw.githubusercontent.com/wondayehualemu-dev/Alemu-u-project/main/alex.jpg"
-    alt="Alemu Wondayehu"
-    style="width:180px;height:180px;object-fit:cover;object-position:center top;border-radius:50%;border:4px solid #38bdf8;margin-bottom:20px;"
-  >
 
-  <h1>Hello, I'm <span>Alemu Wondayehu Gashi</span></h1>
-  <p>Welcome to my official personal website.</p>
+    <img
+      src="https://raw.githubusercontent.com/wondayehualemu-dev/Alemu-u-project/main/alex.jpg"
+      alt="Alemu Wondayehu Gashi"
+      class="photo"
+      onerror="this.style.display='none'"
+    >
 
-  <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
-    <a href="https://facebook.com/Alemuwon" target="_blank" rel="noopener noreferrer" style="background:#1877f2;color:white;padding:12px 20px;border-radius:25px;text-decoration:none;">Facebook</a>
-    <a href="https://t.me/Alemuwon" target="_blank" rel="noopener noreferrer" style="background:#229ed9;color:white;padding:12px 20px;border-radius:25px;text-decoration:none;">Telegram</a>
-  </div>
+    <div class="hero-text">
 
-  <a class="btn" href="#about">Discover More</a>
-</section>
+      <h1>
+        <span id="heroGreeting">ሰላም፣ እኔ</span>
+        <span>Alemu Wondayehu Gashi</span>
+      </h1>
 
-  <section id="about">
-    <h2 id="aboutTitle">ስለ እኔ</h2>
-    <div class="panel">
-      <p id="aboutText">ሰላም! እኔ Alemu Wondayehu ነኝ። ይህን ድረገጽ ራሴን፣ ሀሳቦቼን እና ፕሮጀክቶቼን ለማሳየት ገንብቻለሁ። እንኳን ደህና መጡ!</p>
+      <p id="heroDescription">
+        ወደ የግል ድረገጼ እንኳን በደህና መጡ።
+        ስለ እኔ፣ ስራዎቼ እና ፕሮጀክቶቼ እዚህ ያግኙ።
+      </p>
+
+      <div class="hero-actions">
+
+        <a class="btn" href="#about" id="discoverButton">
+          ተጨማሪ ይወቁ
+        </a>
+
+        <div class="social-links">
+          <a href="https://facebook.com/Alemuwon"
+             target="_blank"
+             rel="noopener noreferrer">
+            Facebook
+          </a>
+
+          <a href="https://t.me/Alemuwon"
+             target="_blank"
+             rel="noopener noreferrer">
+            Telegram
+          </a>
+        </div>
+
+      </div>
     </div>
   </section>
 
+  <section id="about">
+
+    <h2 id="aboutTitle">ስለ እኔ</h2>
+
+    <div class="panel">
+      <p id="aboutText">
+        ሰላም! እኔ Alemu Wondayehu ነኝ።
+        ይህን ድረገጽ ራሴን፣ ሀሳቦቼን
+        እና ፕሮጀክቶቼን ለማሳየት ገንብቻለሁ።
+        እንኳን ደህና መጡ!
+      </p>
+    </div>
+
+  </section>
+
   <section id="projects">
+
     <h2 id="projectsTitle">ፕሮጀክቶቼ</h2>
+
     <div class="projects">
-      <div class="project">
+
+      <article class="project">
         <h3>ALEM U PROJECT</h3>
         <p id="project1">የግል ድረገጽ ፕሮጀክቴ።</p>
-      </div>
-      <div class="project">
-        <h3>My Portfolio</h3>
-        <p id="project2">የስራዎቼን እና ሀሳቦቼን ማሳያ ቦታ።</p>
-      </div>
+      </article>
+
+      <article class="project">
+        <h3 id="portfolioTitle">የግል ማሳያ ድረገጽ</h3>
+        <p id="project2">
+          የስራዎቼን እና ሀሳቦቼን ማሳያ ቦታ።
+        </p>
+      </article>
+
     </div>
   </section>
 
   <section id="contact">
+
     <h2 id="contactTitle">አግኙኝ</h2>
+
     <div class="panel">
       <p id="contactText">ለመገናኘት በኢሜይል ያግኙኝ።</p>
-      <p>Email: <a href="mailto:Wondayehualemu@gmail.com">Wondayehualemu@gmail.com</a></p>
+
+      <p>
+        Email:
+        <a href="mailto:Wondayehualemu@gmail.com">
+          Wondayehualemu@gmail.com
+        </a>
+      </p>
     </div>
+
   </section>
+
 </main>
 
 <footer>
-  © 2026 Alemu Wondayehu. All Rights Reserved.
+  <span id="footerText">
+    © 2026 Alemu Wondayehu. መብቱ በሙሉ የተጠበቀ ነው።
+  </span>
 </footer>
 
 <script>
+
 let english = false;
+
+const translations = {
+
+  am: {
+    heroGreeting: "ሰላም፣ እኔ",
+    heroDescription:
+      "ወደ የግል ድረገጼ እንኳን በደህና መጡ። ስለ እኔ፣ ስራዎቼ እና ፕሮጀክቶቼ እዚህ ያግኙ።",
+    discoverButton: "ተጨማሪ ይወቁ",
+    aboutTitle: "ስለ እኔ",
+    aboutText:
+      "ሰላም! እኔ Alemu Wondayehu ነኝ። ይህን ድረገጽ ራሴን፣ ሀሳቦቼን እና ፕሮጀክቶቼን ለማሳየት ገንብቻለሁ። እንኳን ደህና መጡ!",
+    projectsTitle: "ፕሮጀክቶቼ",
+    portfolioTitle: "የግል ማሳያ ድረገጽ",
+    project1: "የግል ድረገጽ ፕሮጀክቴ።",
+    project2: "የስራዎቼን እና ሀሳቦቼን ማሳያ ቦታ።",
+    contactTitle: "አግኙኝ",
+    contactText: "ለመገናኘት በኢሜይል ያግኙኝ።",
+    footerText: "© 2026 Alemu Wondayehu. መብቱ በሙሉ የተጠበቀ ነው።"
+  },
+
+  en: {
+    heroGreeting: "Hello, I'm",
+    heroDescription:
+      "Welcome to my personal website. Explore my profile, work and projects here.",
+    discoverButton: "Discover More",
+    aboutTitle: "About Me",
+    aboutText:
+      "Hello! I am Alemu Wondayehu. I created this website to share my profile, ideas and projects. Welcome!",
+    projectsTitle: "My Projects",
+    portfolioTitle: "My Portfolio",
+    project1: "My personal website project.",
+    project2: "A place to showcase my work and ideas.",
+    contactTitle: "Contact Me",
+    contactText: "Please contact me by email.",
+    footerText: "© 2026 Alemu Wondayehu. All Rights Reserved."
+  }
+
+};
+
 function toggleLanguage() {
+
   english = !english;
-  document.getElementById("welcome").textContent = english
-    ? "Welcome to my personal website!" : "እንኳን ወደ የግል ድረገጼ በደህና መጡ!";
-  document.getElementById("intro").textContent = english
-    ? "This is my personal website. Learn about me, my work and my projects here."
-    : "ይህ የግል ድረገጼ ነው። ስለ እኔ፣ ስራዎቼ እና ፕሮጀክቶቼ እዚህ ማወቅ ይችላሉ።";
-  document.getElementById("more").textContent = english ? "Learn About Me" : "ስለ እኔ ይወቁ";
-  document.getElementById("aboutTitle").textContent = english ? "About Me" : "ስለ እኔ";
-  document.getElementById("aboutText").textContent = english
-    ? "Hello! I am Alemu Wondayehu. I created this website to share my profile, ideas and projects. Welcome!"
-    : "ሰላም! እኔ Alemu Wondayehu ነኝ። ይህን ድረገጽ ራሴን፣ ሀሳቦቼን እና ፕሮጀክቶቼን ለማሳየት ገንብቻለሁ። እንኳን ደህና መጡ!";
-  document.getElementById("projectsTitle").textContent = english ? "My Projects" : "ፕሮጀክቶቼ";
-  document.getElementById("project1").textContent = english ? "My personal website project." : "የግል ድረገጽ ፕሮጀክቴ።";
-  document.getElementById("project2").textContent = english ? "A place to showcase my work and ideas." : "የስራዎቼን እና ሀሳቦቼን ማሳያ ቦታ።";
-  document.getElementById("contactTitle").textContent = english ? "Contact Me" : "አግኙኝ";
-  document.getElementById("contactText").textContent = english ? "Contact me by email." : "ለመገናኘት በኢሜይል ያግኙኝ።";
+
+  const language = english ? "en" : "am";
+
+  document.documentElement.lang = language;
+
+  document.querySelectorAll("[data-am][data-en]").forEach((element) => {
+    element.textContent = element.dataset[language];
+  });
+
+  Object.entries(translations[language]).forEach(([id, value]) => {
+
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.textContent = value;
+    }
+
+  });
+
+  document.getElementById("languageButton").textContent =
+    english ? "EN / አማ" : "አማ / EN";
+
 }
+
 </script>
 
 </body>
