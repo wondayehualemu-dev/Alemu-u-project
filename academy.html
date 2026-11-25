@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Alemu U Project Learning Academy — learn Frontend, Backend and Full Stack development step by step.">
 <meta name="theme-color" content="#081426">
+
 <title>Alemu U Project | Learning Academy</title>
+
+<style>
 .path-item {
   width: 100%;
   text-align: left;
@@ -31,7 +34,9 @@ button:disabled {
   overflow-wrap: anywhere;
   tab-size: 2;
 }
+</style>
 </head>
+
 <body>
 <header><div class="container navbar">
 <a class="logo" href="#home">ALEMU U.</a>
@@ -226,7 +231,15 @@ const courses = [
 },
 
 {id:'css',category:'frontend',icon:'🎨',level:'Beginner',title:'CSS Styling',desc:'Style web pages with colors, layouts and responsive design.',lessons:[
-{title:'CSS Introduction and Selectors',am:'CSS (Cascading Style Sheets) የHTML ክፍሎችን መልክ ይቆጣጠራል። selector የትኛው element ላይ style እንደሚተገበር ይመርጣል።',en:'CSS controls the presentation of HTML. A selector targets elements; declarations specify properties and values. CSS can be written in external files, style elements or inline styles.',code:'/* styles.css */\\nh1 {\\n  color: navy;\\n  font-size: 32px;\\n}\\n.card {\\n  background: white;\\n  padding: 16px;\\n}',task:'Create a styles.css file and style a heading and a card.',quiz:{q:'Which symbol selects a class in CSS?',opts:['#','.','*'],answer:1,why:'A dot (.) selects a class, such as .card.'}},
+{title:'CSS Introduction and Selectors',am:'CSS (Cascading Style Sheets) የHTML ክፍሎችን መልክ ይቆጣጠራል። selector የትኛው element ላይ style እንደሚተገበር ይመርጣል።',en:'CSS controls the presentation of HTML. A selector targets elements; declarations specify properties and values. CSS can be written in external files, style elements or inline styles.',code: `/* styles.css */
+h1 {
+  color: navy;
+  font-size: 32px;
+}
+.card {
+  background: white;
+  padding: 16px;
+}`,task:'Create a styles.css file and style a heading and a card.',quiz:{q:'Which symbol selects a class in CSS?',opts:['#','.','*'],answer:1,why:'A dot (.) selects a class, such as .card.'}},
 {title:'Colors, Fonts and Box Model',am:'Box Model ከcontent፣ padding፣ border እና margin ይሠራል። padding በcontent እና border መካከል ነው፤ margin ከelement ውጭ ያለ ቦታ ነው።',en:'The CSS box model consists of content, padding, border and margin. Use box-sizing:border-box to make sizing easier to reason about.',code:'* { box-sizing: border-box; }\\n.card {\\n  padding: 20px;\\n  border: 1px solid #ccc;\\n  margin: 12px;\\n  border-radius: 8px;\\n}',task:'Create a card and experiment with padding, border and margin.',quiz:{q:'Which property adds space outside an element border?',opts:['padding','margin','font-size'],answer:1,why:'Margin creates space outside the border.'}},
 {title:'Flexbox Layout',am:'Flexbox በአንድ አቅጣጫ (row ወይም column) ውስጥ items ለማደራጀት ይጠቅማል። display:flex በparent ላይ ይጻፋል።',en:'Flexbox is a one-dimensional layout system. Apply display:flex to a container, then use justify-content and align-items to arrange its children.',code:'.navbar {\\n  display: flex;\\n  justify-content: space-between;\\n  align-items: center;\\n  gap: 16px;\\n}',task:'Build a navigation bar with a logo on the left and links on the right.',quiz:{q:'Which property aligns flex items along the main axis?',opts:['justify-content','border','font-family'],answer:0,why:'justify-content distributes items along the main axis.'}},
 {title:'CSS Grid and Responsive Design',am:'Grid ሁለት አቅጣጫዊ row እና column layout ለመገንባት ይጠቅማል። Media query ደግሞ በscreen መጠን መሠረት style ይቀይራል።',en:'CSS Grid handles two-dimensional layouts. Media queries apply styles based on viewport conditions, helping layouts adapt to phones, tablets and desktops.',code:='.cards {\\n  display: grid;\\n  grid-template-columns: repeat(3, 1fr);\\n  gap: 16px;\\n}\\n@media (max-width: 700px) {\\n  .cards { grid-template-columns: 1fr; }\\n}',task:'Make a three-column card layout that becomes one column on a narrow screen.',quiz:{q:'What does a media query help create?',opts:['Responsive layouts','HTML tags','SQL tables'],answer:0,why:'Media queries apply CSS depending on viewport or device conditions.'}}
@@ -277,6 +290,7 @@ function renderCourses(){
  document.getElementById('noResults').style.display=list.length?'none':'block';
 }
  
+
 function selectLevel(level) {
   const selectedCourses = courses.filter(course => {
     if (level === "Advanced") {
@@ -286,70 +300,6 @@ function selectLevel(level) {
 
     return course.level === level;
   });
-
-  const grid = document.getElementById("courseGrid");
-  const noResults = document.getElementById("noResults");
-
-  grid.innerHTML = selectedCourses.map(course => `
-    <article class="course">
-      <div class="course-top">
-        <span class="course-icon">${course.icon}</span>
-        <small>${course.level}</small>
-      </div>
-
-      <div class="course-body">
-        <h3>${course.title}</h3>
-        <p>${course.desc}</p>
-
-        <div class="course-meta">
-          <span>${course.lessons.length} Lessons</span>
-        </div>
-
-        <button class="details-btn"
-                type="button"
-                onclick="openCourse('${course.id}')">
-          ${t('ትምህርቱን ክፈት', 'Open Course')} →
-        </button>
-      </div>
-    </article>
-  `).join("");
-
-  noResults.style.display =
-    selectedCourses.length ? "none" : "block";
-
-  document.getElementById("courses").scrollIntoView({
-    behavior: "smooth"
-  });
-}
-
-  document.getElementById("courseGrid").innerHTML =
-    selectedCourses.map(course => `
-      <article class="course">
-        <div class="course-top">
-          <span class="course-icon">${course.icon}</span>
-          <small>${course.level}</small>
-        </div>
-
-        <div class="course-body">
-          <h3>${course.title}</h3>
-          <p>${course.desc}</p>
-
-          <div class="course-meta">
-            <span>${course.lessons.length} Lessons</span>
-          </div>
-
-          <button class="details-btn"
-            onclick="openCourse('${course.id}')">
-            ${t('ትምህርቱን ክፈት','Open Course')} →
-          </button>
-        </div>
-      </article>
-    `).join("");
-
-  document.getElementById("courses").scrollIntoView({
-    behavior: "smooth"
-  });
-}
 
 function selectFilter(filter){currentFilter=filter;document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));renderCourses();document.getElementById('courses').scrollIntoView({behavior:'smooth'});}
 document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>selectFilter(b.dataset.filter)));
