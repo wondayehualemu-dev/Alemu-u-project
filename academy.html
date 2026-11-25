@@ -59,7 +59,73 @@ footer{background:#0d1d34;border-top:1px solid var(--border);padding:30px 0;text
 <div class="room-layout"><aside class="lesson-list"><h3 data-am="የትምህርት ዝርዝር" data-en="Course Lessons">የትምህርት ዝርዝር</h3><div id="lessonLinks"></div></aside><article class="lesson-panel" id="lessonContent" aria-live="polite"></article></div>
 </div></section>
 <section id="path"><div class="container"><h2 class="section-title" data-am="የመማሪያ መንገድ" data-en="Your Learning Journey">የመማሪያ መንገድ</h2><p class="section-desc" data-am="እውቀትህን በደረጃ ገንባ።" data-en="Build your knowledge step by step.">እውቀትህን በደረጃ ገንባ።</p><div class="path">
-<div class="path-item"><h3>01. Beginner</h3><p>HTML, CSS, programming basics, variables and simple projects.</p></div><div class="path-item"><h3>02. Intermediate</h3><p>JavaScript, React, Java, databases, APIs and application structure.</p></div><div class="path-item"><h3>03. Advanced</h3><p>Backend architecture, security, testing, deployment and complete projects.</p></div>
+<div class="path-item"><h3>
+<div class="path">
+
+  <button class="path-item" onclick="selectLevel('Beginner')">
+    <h3>
+<div class="path">
+
+  <button class="path-item" onclick="selectLevel('Beginner')">
+    <h3>
+<div class="path">
+
+  <button class="path-item" onclick="selectLevel('Beginner')">
+    <h3>01. Beginner</h3>
+    <p>HTML, CSS, JavaScript and Java basics.</p>
+    <strong>Start Beginner Lessons →</strong>
+  </button>
+
+  <button class="path-item" onclick="selectLevel('Intermediate')">
+    <h3>02. Intermediate</h3>
+    <p>React, Database and PostgreSQL.</p>
+    <strong>Start Intermediate Lessons →</strong>
+  </button>
+
+  <button class="path-item" onclick="selectLevel('Advanced')">
+    <h3>03. Advanced</h3>
+    <p>Spring Boot, REST API and Full Stack.</p>
+    <strong>Start Advanced Lessons →</strong>
+  </button>
+
+</div>
+</h3>
+    <p>HTML, CSS, JavaScript and Java basics.</p>
+    <strong>Start Beginner Lessons →</strong>
+  </button>
+
+  <button class="path-item" onclick="selectLevel('Intermediate')">
+    <h3>02. Intermediate</h3>
+    <p>React, Database and PostgreSQL.</p>
+    <strong>Start Intermediate Lessons →</strong>
+  </button>
+
+  <button class="path-item" onclick="selectLevel('Advanced')">
+    <h3>03. Advanced</h3>
+    <p>Spring Boot, REST API and Full Stack.</p>
+    <strong>Start Advanced Lessons →</strong>
+  </button>
+
+</div>
+</h3>
+    <p>HTML, CSS, JavaScript and Java basics.</p>
+    <strong>Start Beginner Lessons →</strong>
+  </button>
+
+  <button class="path-item" onclick="selectLevel('Intermediate')">
+    <h3>02. Intermediate</h3>
+    <p>React, Database and PostgreSQL.</p>
+    <strong>Start Intermediate Lessons →</strong>
+  </button>
+
+  <button class="path-item" onclick="selectLevel('Advanced')">
+    <h3>03. Advanced</h3>
+    <p>Spring Boot, REST API and Full Stack.</p>
+    <strong>Start Advanced Lessons →</strong>
+  </button>
+
+</div>
+</h3><p>HTML, CSS, programming basics, variables and simple projects.</p></div><div class="path-item"><h3>02. Intermediate</h3><p>JavaScript, React, Java, databases, APIs and application structure.</p></div><div class="path-item"><h3>03. Advanced</h3><p>Backend architecture, security, testing, deployment and complete projects.</p></div>
 </div></div></section>
 <section><div class="container"><h2 class="section-title" data-am="የትምህርት አቀራረባችን" data-en="Our Learning Approach">የትምህርት አቀራረባችን</h2><div class="features">
 <div class="feature"><h3>📖 Step-by-Step Lessons</h3><p>Learn in a structured sequence from simple to complex topics.</p></div><div class="feature"><h3>💻 Practical Coding</h3><p>Practice with code examples and practical exercises.</p></div><div class="feature"><h3>📝 Quizzes & Exams</h3><p>Check your understanding with short quizzes.</p></div><div class="feature"><h3>🏆 Real Projects</h3><p>Apply your skills by building real-world applications.</p></div>
@@ -126,6 +192,46 @@ function renderCourses(){
  document.getElementById('courseGrid').innerHTML=list.map(c=>`<article class="course"><div class="course-top"><span class="course-icon">${c.icon}</span><small>${c.category.toUpperCase()} · ${c.lessons.length} LESSONS</small></div><div class="course-body"><h3>${c.title}</h3><p>${c.desc}</p><div class="course-meta"><span>${c.level}</span><span>${c.lessons.length} lessons</span></div><button class="details-btn" onclick="openCourse('${c.id}')">${t('ትምህርቱን ክፈት','Open Course')} →</button></div></article>`).join('');
  document.getElementById('noResults').style.display=list.length?'none':'block';
 }
+ 
+function selectLevel(level) {
+  const selectedCourses = courses.filter(course => {
+    if (level === "Advanced") {
+      return course.level === "Advanced" ||
+             course.level === "Professional";
+    }
+
+    return course.level === level;
+  });
+
+  document.getElementById("courseGrid").innerHTML =
+    selectedCourses.map(course => `
+      <article class="course">
+        <div class="course-top">
+          <span class="course-icon">${course.icon}</span>
+          <small>${course.level}</small>
+        </div>
+
+        <div class="course-body">
+          <h3>${course.title}</h3>
+          <p>${course.desc}</p>
+
+          <div class="course-meta">
+            <span>${course.lessons.length} Lessons</span>
+          </div>
+
+          <button class="details-btn"
+            onclick="openCourse('${course.id}')">
+            ${t('ትምህርቱን ክፈት','Open Course')} →
+          </button>
+        </div>
+      </article>
+    `).join("");
+
+  document.getElementById("courses").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
 function selectFilter(filter){currentFilter=filter;document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));renderCourses();document.getElementById('courses').scrollIntoView({behavior:'smooth'});}
 document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>selectFilter(b.dataset.filter)));
 document.getElementById('courseSearch').addEventListener('input',renderCourses);
